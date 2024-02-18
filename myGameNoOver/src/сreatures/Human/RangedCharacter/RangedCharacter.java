@@ -4,8 +4,8 @@ import сreatures.Auxiliary.Location2D;
 import сreatures.Human.Human;
 
 public abstract class RangedCharacter extends Human{
-    int accuracy;
-    int rangeAttack;
+    protected int accuracy;
+    protected int rangeAttack;
 
 
     /** Полный конструктор класса животное
