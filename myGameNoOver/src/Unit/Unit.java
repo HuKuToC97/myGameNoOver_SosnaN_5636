@@ -3,6 +3,8 @@ package Unit;
 import Unit.Auxiliary.Location2D;
 
 public abstract class Unit {
+    protected Status status;
+
     protected String name;
     protected String typeUnit;
 
@@ -35,13 +37,9 @@ public abstract class Unit {
      * @param dexterity        Ловкость
      * @param sustainability   Устойчивость
      */
-
-    public Unit(String name, String typeUnit,
-            int level, int experiencePoints,
-            int initiative,
-            Location2D location,
-            int hitPoints, int maxHitPoints,
-            int power, int dexterity, int sustainability) {
+    public Unit(Status status, String name, String typeUnit, int level, int experiencePoints, int initiative,
+            Location2D location, int hitPoints, int maxHitPoints, int power, int dexterity, int sustainability) {
+        this.status = status;
         this.name = name;
         this.typeUnit = typeUnit;
         this.level = level;
@@ -56,11 +54,25 @@ public abstract class Unit {
     }
 
     public Unit(String name, String typeUnit,
+            int level, int experiencePoints,
+            int initiative,
+            Location2D location,
+            int hitPoints, int maxHitPoints,
+            int power, int dexterity, int sustainability) {
+                this(Status.ALIVE, name, typeUnit,
+                1, 0,
+                initiative,
+                location,
+                maxHitPoints, maxHitPoints,
+                power, dexterity, sustainability);
+    }
+
+    public Unit(String name, String typeUnit,
             int initiative,
             Location2D location,
             int maxHitPoints,
             int power, int dexterity, int sustainability) {
-        this(name, typeUnit,
+        this(Status.ALIVE, name, typeUnit,
                 1, 0,
                 initiative,
                 location,
@@ -70,7 +82,7 @@ public abstract class Unit {
 
     public Unit(String name, String typeUnit, int initiative, int maxHitPoints,
             int power, int dexterity, int sustainability) {
-        this(name, typeUnit, 1, 0, initiative, new Location2D(), maxHitPoints, maxHitPoints, power, dexterity,
+        this(Status.ALIVE, name, typeUnit, 1, 0, initiative, new Location2D(), maxHitPoints, maxHitPoints, power, dexterity,
                 sustainability);
     }
 
@@ -97,16 +109,24 @@ public abstract class Unit {
 
         if (sustainability < 0)
             sustainability = 0;
-        
+
         if (hitPoints < 0)
             dead();
     }
 
-    public void dead(){
-        System.out.println( this + "- умер");
+    public void dead() {
+        status = Status.DEAD;
+        System.out.println(this + "- умер");
     }
 
     // Getters and setters
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public String getName() {
         return name;

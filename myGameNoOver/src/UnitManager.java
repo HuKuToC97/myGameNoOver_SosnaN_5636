@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import Unit.Unit;
 import Unit.Animal.Animal;
 import Unit.Human.ContactCharacter.Worker.Peasant;
+import Unit.Human.ContactCharacter.Worker.Squire;
 
 public class UnitManager {
     public static ArrayList<Unit> createUnitList() {
@@ -22,6 +23,8 @@ public class UnitManager {
 
         Peasant peasant = new Peasant("Иван");
         units.add(peasant);
+        Squire squire = new Squire("Армэн");
+        units.add(squire);
 
         return units;
     }
