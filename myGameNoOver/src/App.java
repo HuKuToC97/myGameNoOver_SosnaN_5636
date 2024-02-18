@@ -1,5 +1,4 @@
-import сreatures.Animal;
-import сreatures.Auxiliary.Location2D;
+import сreatures.Animal.Animal;
 
 public class App {
     /**
@@ -9,13 +8,13 @@ public class App {
 
         Animal kapibara = new Animal("Константин", 
         "Капибара", 
-        100, 
+        1000000, 
         1000000,       
         1000000, 
-        new Location2D(), 
-        100, 
+        10000000, 
         100, 50, 150, 100);
-                System.out.println(kapibara.toString());
-                System.out.println("123");
+        kapibara.showInfoLabel();
+        System.out.println(kapibara);
+
     }
 }
