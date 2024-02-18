@@ -2,8 +2,8 @@ package Unit.Human.ContactCharacter.Warrior;
 
 import Unit.Auxiliary.Location2D;
 
-public class Robber extends Warrior{
-    public Robber(String name, String typeUnit,
+public class Hunter extends Warrior{
+    public Hunter(String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
             Location2D location,
@@ -19,7 +19,7 @@ public class Robber extends Warrior{
                 endurance, maxEndurance);
     }
 
-    public Robber(String name, String typeUnit,
+    public Hunter(String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
             Location2D location,
@@ -35,7 +35,7 @@ public class Robber extends Warrior{
                 maxEndurance, maxEndurance);
     }
 
-    public Robber(String name) {
+    public Hunter(String name) {
         this(name, "Охотник",
                 1, 0,
                 10,
@@ -44,8 +44,8 @@ public class Robber extends Warrior{
                 10, 10, 10,
                 1000);
     }
-    
-    public void backstab(){
-        
-    };
+
+    public void catchInNet() {
+
+    }
 }

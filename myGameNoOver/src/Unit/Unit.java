@@ -88,7 +88,6 @@ public abstract class Unit {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return typeUnit + " " + name;
     }
 
