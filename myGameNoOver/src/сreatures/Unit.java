@@ -59,19 +59,30 @@ public abstract class Unit {
     }
 
     public Unit(String name, String typeUnit, int initiative, int maxHitPoints,
-    int power, int dexterity, int sustainability) {
-    this(name, typeUnit, 1, 0, initiative, new Location2D(), maxHitPoints, maxHitPoints, power, dexterity,
-        sustainability);
-}
-
+            int power, int dexterity, int sustainability) {
+        this(name, typeUnit, 1, 0, initiative, new Location2D(), maxHitPoints, maxHitPoints, power, dexterity,
+                sustainability);
+    }
 
     @Override
     public String toString() {
-        return "Unit [name=" + name + ", typeСharacter=" + typeUnit + ", level=" + level
-                + ", experiencePoints=" + experiencePoints + ", initiative=" + initiative + ", location=" + location
-                + ", hitPoints=" + hitPoints + ", maxHitPoints=" + maxHitPoints + ", power=" + power + ", dexterity="
-                + dexterity + ", sustainability=" + sustainability + "]";
+        // TODO Auto-generated method stub
+        return "Unit [name=" + name + ", typeСharacter=" + typeUnit + "]";
+    }
+    
+    // @Override
+    // public String toString() {
+    // return "Unit [name=" + name + ", typeСharacter=" + typeUnit + ", level=" +
+    // level
+    // + ", experiencePoints=" + experiencePoints + ", initiative=" + initiative +
+    // ", location=" + location
+    // + ", hitPoints=" + hitPoints + ", maxHitPoints=" + maxHitPoints + ", power="
+    // + power + ", dexterity="
+    // + dexterity + ", sustainability=" + sustainability + "]";
+    // }
+
+    public void showInfoLabel() {
+        System.out.println(String.format("%s %s %d lvl: %d HP.", typeUnit, name, level, hitPoints));
     }
 
-    
 }

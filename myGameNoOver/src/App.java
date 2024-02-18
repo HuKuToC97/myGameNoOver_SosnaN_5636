@@ -1,4 +1,5 @@
 import сreatures.Animal.Animal;
+import сreatures.Human.ContactCharacter.Worker.Peasant;
 
 public class App {
     /**
@@ -15,6 +16,9 @@ public class App {
         100, 50, 150, 100);
         kapibara.showInfoLabel();
         System.out.println(kapibara);
+
+        Peasant peasant = new Peasant("Иван");
+        
 
     }
 }
