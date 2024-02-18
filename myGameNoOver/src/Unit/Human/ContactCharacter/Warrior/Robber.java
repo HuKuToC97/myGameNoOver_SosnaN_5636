@@ -36,7 +36,7 @@ public class Robber extends Warrior{
     }
 
     public Robber(String name) {
-        this(name, "Охотник",
+        this(name, "Разбойник",
                 1, 0,
                 10,
                 new Location2D(),

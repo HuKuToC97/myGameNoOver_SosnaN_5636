@@ -21,9 +21,12 @@ public abstract class Unit {
     protected int dexterity;
     protected int sustainability;
 
+    // Определяем константы для удобства чтения кода
+    private static final int DEFAULT_LEVEL = 1;
+    private static final int DEFAULT_EXPERIENCE_POINTS = 0;
+
     /**
-     * Full constructor for abstract class Creature
-     * Полный конструктор для класса существо
+     * Полный конструктор для класса Unit
      * 
      * @param name             Имя
      * @param typeUnit         Тип юнита
@@ -37,8 +40,13 @@ public abstract class Unit {
      * @param dexterity        Ловкость
      * @param sustainability   Устойчивость
      */
-    public Unit(Status status, String name, String typeUnit, int level, int experiencePoints, int initiative,
-            Location2D location, int hitPoints, int maxHitPoints, int power, int dexterity, int sustainability) {
+    public Unit(Status status,
+            String name, String typeUnit,
+            int level, int experiencePoints,
+            int initiative,
+            Location2D location,
+            int hitPoints, int maxHitPoints,
+            int power, int dexterity, int sustainability) {
         this.status = status;
         this.name = name;
         this.typeUnit = typeUnit;
@@ -59,7 +67,7 @@ public abstract class Unit {
             Location2D location,
             int hitPoints, int maxHitPoints,
             int power, int dexterity, int sustainability) {
-                this(Status.ALIVE, name, typeUnit,
+        this(Status.ALIVE, name, typeUnit,
                 1, 0,
                 initiative,
                 location,
@@ -73,17 +81,24 @@ public abstract class Unit {
             int maxHitPoints,
             int power, int dexterity, int sustainability) {
         this(Status.ALIVE, name, typeUnit,
-                1, 0,
+                DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 initiative,
                 location,
                 maxHitPoints, maxHitPoints,
                 power, dexterity, sustainability);
     }
 
-    public Unit(String name, String typeUnit, int initiative, int maxHitPoints,
+    public Unit(String name, String typeUnit,
+            int initiative,
+            int maxHitPoints,
             int power, int dexterity, int sustainability) {
-        this(Status.ALIVE, name, typeUnit, 1, 0, initiative, new Location2D(), maxHitPoints, maxHitPoints, power, dexterity,
-                sustainability);
+        this(Status.ALIVE,
+                name, typeUnit,
+                DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
+                initiative,
+                new Location2D(),
+                maxHitPoints, maxHitPoints,
+                power, dexterity, sustainability);
     }
 
     @Override
@@ -96,8 +111,12 @@ public abstract class Unit {
     }
 
     public void getDamage(Unit unit) {
-        int amountDamage = power;
+        int amountDamage = calculateDamage();
         unit.takeDamage(amountDamage);
+    }
+
+    private int calculateDamage() {
+        return power * (1 + dexterity / 100);
     }
 
     public void takeDamage(int amountDamage) {

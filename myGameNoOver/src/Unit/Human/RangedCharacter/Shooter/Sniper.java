@@ -44,7 +44,7 @@ public class Sniper extends Shooter {
     }
 
     public Sniper(String name) {
-        this(name, "Арбалетчик",
+        this(name, "Снайпер",
                 1, 0,
                 10,
                 new Location2D(),
@@ -54,7 +54,7 @@ public class Sniper extends Shooter {
                 100,
                 0, 100);
     }
-    
+
     public void shotToFly(){
 
     }
