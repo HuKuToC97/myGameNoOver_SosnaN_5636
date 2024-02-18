@@ -36,8 +36,11 @@ public abstract class Unit {
      * @param sustainability   Устойчивость
      */
 
-    public Unit(String name, String typeUnit, int level, int experiencePoints, int initiative,
-            Location2D location, int hitPoints, int maxHitPoints,
+    public Unit(String name, String typeUnit,
+            int level, int experiencePoints,
+            int initiative,
+            Location2D location,
+            int hitPoints, int maxHitPoints,
             int power, int dexterity, int sustainability) {
         this.name = name;
         this.typeUnit = typeUnit;
@@ -52,10 +55,17 @@ public abstract class Unit {
         this.sustainability = sustainability;
     }
 
-    public Unit(String name, String typeUnit, int initiative, Location2D location, int maxHitPoints,
+    public Unit(String name, String typeUnit,
+            int initiative,
+            Location2D location,
+            int maxHitPoints,
             int power, int dexterity, int sustainability) {
-        this(name, typeUnit, 1, 0, initiative, location, maxHitPoints, maxHitPoints, power, dexterity,
-                sustainability);
+        this(name, typeUnit,
+                1, 0,
+                initiative,
+                location,
+                maxHitPoints, maxHitPoints,
+                power, dexterity, sustainability);
     }
 
     public Unit(String name, String typeUnit, int initiative, int maxHitPoints,
@@ -70,20 +80,33 @@ public abstract class Unit {
         return typeUnit + " " + name;
     }
 
-    // @Override
-    // public String toString() {
-    // return "Unit [name=" + name + ", typeСharacter=" + typeUnit + ", level=" +
-    // level
-    // + ", experiencePoints=" + experiencePoints + ", initiative=" + initiative +
-    // ", location=" + location
-    // + ", hitPoints=" + hitPoints + ", maxHitPoints=" + maxHitPoints + ", power="
-    // + power + ", dexterity="
-    // + dexterity + ", sustainability=" + sustainability + "]";
-    // }
-
     public void showInfoLabel() {
         System.out.println(String.format("'%s %s' lvl %d, %d HP", typeUnit, name, level, hitPoints));
     }
+
+    public void getDamage(Unit unit) {
+        int amountDamage = power;
+        unit.takeDamage(amountDamage);
+    }
+
+    public void takeDamage(int amountDamage) {
+        hitPoints = hitPoints - (amountDamage * (sustainability / 100));
+        sustainability = sustainability - 10;
+        if (hitPoints > maxHitPoints)
+            hitPoints = maxHitPoints;
+
+        if (sustainability < 0)
+            sustainability = 0;
+        
+        if (hitPoints < 0)
+            dead();
+    }
+
+    public void dead(){
+        System.out.println( this + "- умер");
+    }
+
+    // Getters and setters
 
     public String getName() {
         return name;

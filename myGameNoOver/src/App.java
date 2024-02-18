@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 import Unit.Unit;
-import Unit.UnitManager;
 
 public class App {
     /**
@@ -9,9 +8,9 @@ public class App {
      */
     public static void main(String[] args) {
         ArrayList<Unit> units = UnitManager.createUnitList();
-        
-
-
+        for (Unit unit : units) {
+            System.out.println(unit);
+        }
 
     }
 }
