@@ -39,6 +39,17 @@ public class Monk extends Confessor {
                 maxFaith, maxFaith);
     }
 
+    public Monk(String name, int x, int y) {
+        this(name, "Monk (Монах)",
+                1, 0,
+                10,
+                new Location2D(x, y),
+                100,
+                10, 10, 10,
+                100, 100,
+                1000);
+    }
+
     public Monk(String name) {
         this(name, "Монах",
                 1, 0,
@@ -49,8 +60,8 @@ public class Monk extends Confessor {
                 100, 100,
                 1000);
     }
-    
-    public void prayer(){
+
+    public void prayer() {
 
     }
 }

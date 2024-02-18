@@ -43,6 +43,18 @@ public class Crossbowman extends Shooter {
                 ammunition, maxAmmunition);
     }
 
+    public Crossbowman(String name, int x, int y) {
+        this(name, "Crossbowman (Арбалетчик)",
+                1, 0,
+                10,
+                new Location2D(x, y),
+                100,
+                10, 10, 10,
+                100, 100,
+                100,
+                0, 100);
+    }
+
     public Crossbowman(String name) {
         this(name, "Арбалетчик",
                 1, 0,

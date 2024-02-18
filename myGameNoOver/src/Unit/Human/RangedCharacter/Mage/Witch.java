@@ -2,8 +2,8 @@ package Unit.Human.RangedCharacter.Mage;
 
 import Unit.Auxiliary.Location2D;
 
-public class Witch extends Mage{
-        public Witch(String name, String typeUnit,
+public class Witch extends Mage {
+    public Witch(String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
             Location2D location,
@@ -39,6 +39,17 @@ public class Witch extends Mage{
                 maxMana, maxMana);
     }
 
+    public Witch(String name, int x, int y) {
+        this(name, "Witch (Колдун)",
+                1, 0,
+                10,
+                new Location2D(x, y),
+                100,
+                10, 10, 10,
+                100, 100,
+                100);
+    }
+
     public Witch(String name) {
         this(name, "Колдун",
                 1, 0,
@@ -49,8 +60,8 @@ public class Witch extends Mage{
                 100, 100,
                 100);
     }
-    
-    public void conjure (){
-        
+
+    public void conjure() {
+
     }
 }

@@ -36,6 +36,16 @@ public class Peasant extends Worker {
                 maxCalm, maxCalm);
     }
 
+    public Peasant(String name, int x, int y) {
+        this(name, "Крестьянин",
+                1, 0,
+                10,
+                new Location2D(x, y),
+                100,
+                10, 10, 10,
+                1000);
+    }
+
     public Peasant(String name) {
         this(name, "Крестьянин",
                 1, 0,

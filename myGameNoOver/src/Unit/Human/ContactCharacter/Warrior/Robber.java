@@ -2,7 +2,7 @@ package Unit.Human.ContactCharacter.Warrior;
 
 import Unit.Auxiliary.Location2D;
 
-public class Robber extends Warrior{
+public class Robber extends Warrior {
     public Robber(String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
@@ -35,6 +35,16 @@ public class Robber extends Warrior{
                 maxEndurance, maxEndurance);
     }
 
+    public Robber(String name, int x, int y) {
+        this(name, "Robber (Разбойник)",
+                1, 0,
+                10,
+                new Location2D(x, y),
+                100,
+                10, 10, 10,
+                1000);
+    }
+
     public Robber(String name) {
         this(name, "Разбойник",
                 1, 0,
@@ -44,8 +54,8 @@ public class Robber extends Warrior{
                 10, 10, 10,
                 1000);
     }
-    
-    public void backstab(){
-        
+
+    public void backstab() {
+
     };
 }

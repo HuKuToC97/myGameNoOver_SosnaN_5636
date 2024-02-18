@@ -43,6 +43,18 @@ public class Sniper extends Shooter {
                 ammunition, maxAmmunition);
     }
 
+    public Sniper(String name, int x, int y) {
+        this(name, "Sniper (Снайпер)",
+                1, 0,
+                10,
+                new Location2D(x, y),
+                100,
+                10, 10, 10,
+                100, 100,
+                100,
+                0, 100);
+    }
+
     public Sniper(String name) {
         this(name, "Снайпер",
                 1, 0,
@@ -55,7 +67,7 @@ public class Sniper extends Shooter {
                 0, 100);
     }
 
-    public void shotToFly(){
+    public void shotToFly() {
 
     }
 }

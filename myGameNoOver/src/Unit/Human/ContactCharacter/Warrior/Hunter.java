@@ -2,7 +2,7 @@ package Unit.Human.ContactCharacter.Warrior;
 
 import Unit.Auxiliary.Location2D;
 
-public class Hunter extends Warrior{
+public class Hunter extends Warrior {
     public Hunter(String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
@@ -33,6 +33,16 @@ public class Hunter extends Warrior{
                 maxHitPoints, maxHitPoints,
                 power, dexterity, sustainability,
                 maxEndurance, maxEndurance);
+    }
+
+    public Hunter(String name, int x, int y) {
+        this(name, "Hunter (Охотник)",
+                1, 0,
+                10,
+                new Location2D(x, y),
+                100,
+                10, 10, 10,
+                1000);
     }
 
     public Hunter(String name) {

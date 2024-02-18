@@ -48,6 +48,17 @@ public class Squire extends Worker {
                 maxCalm, maxCalm, fatigue);
     }
 
+    public Squire(String name, int x, int y) {
+        this(name, "Оруженосец",
+                1, 0,
+                10,
+                new Location2D(x, y),
+                100,
+                10, 10, 10,
+                1000,
+                0);
+    }
+
     public Squire(String name) {
         this(name, "Оруженосец",
                 1, 0,
