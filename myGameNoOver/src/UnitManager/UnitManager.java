@@ -60,7 +60,7 @@ public class UnitManager {
         // Добавьте сюда другие классы-наследники, если они есть
     }
 
-    public static ArrayList<Unit> createUnitList(int sizeTeam) {
+    public static ArrayList<Unit> createUnitList(int sizeTeam, int x) {
 
         ArrayList<Unit> units = new ArrayList<>();
         Random random = new Random();
@@ -71,28 +71,28 @@ public class UnitManager {
             UnitType randomType = UnitType.values()[random.nextInt(UnitType.values().length)];
             switch (randomType) {
                 case PEASANT:
-                    units.add(new Peasant(getName()));
+                    units.add(new Peasant(getName(), x, i));
                     break;
                 case SQUIRE:
-                    units.add(new Squire(getName()));
+                    units.add(new Squire(getName(), x, i));
                     break;
                 case ROBBER:
-                    units.add(new Robber(getName()));
+                    units.add(new Robber(getName(), x, i));
                     break;
                 case HUNTER:
-                    units.add(new Hunter(getName()));
+                    units.add(new Hunter(getName(), x, i));
                     break;
                 case MONK:
-                    units.add(new Monk(getName()));
+                    units.add(new Monk(getName(), x, i));
                     break;
                 case WITCH:
-                    units.add(new Witch(getName()));
+                    units.add(new Witch(getName(), x, i));
                     break;
                 case CROSSBOWMAN:
-                    units.add(new Crossbowman(getName()));
+                    units.add(new Crossbowman(getName(), x, i));
                     break;
                 case SNIPER:
-                    units.add(new Sniper(getName()));
+                    units.add(new Sniper(getName(), x, i));
                     break;
                 // Добавьте случаи для других наследников, если они есть
             }

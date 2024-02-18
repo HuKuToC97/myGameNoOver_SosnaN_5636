@@ -17,7 +17,7 @@ public class Location2D {
     @Override
     public String toString() {
         
-        return "Координаты игрока x: " + x + ", y: " + y;
+        return "x: " + x + ", y: " + y;
     }
     
 }

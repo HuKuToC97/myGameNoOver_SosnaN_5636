@@ -110,6 +110,10 @@ public abstract class Unit {
         System.out.println(String.format("'%s %s' lvl %d, %d HP", typeUnit, name, level, hitPoints));
     }
 
+    public void infoForSeminarSecond(){
+        System.out.println(String.format("'%s %s' lvl %d, %d HP, %s", typeUnit, name, level, hitPoints, location));
+    }
+
     public void getDamage(Unit unit) {
         int amountDamage = calculateDamage();
         unit.takeDamage(amountDamage);
