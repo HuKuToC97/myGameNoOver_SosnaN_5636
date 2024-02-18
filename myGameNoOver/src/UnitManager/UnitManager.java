@@ -11,6 +11,7 @@ import Unit.Human.ContactCharacter.Worker.Peasant;
 import Unit.Human.ContactCharacter.Worker.Squire;
 import Unit.Human.RangedCharacter.Confessor.Monk;
 import Unit.Human.RangedCharacter.Mage.Witch;
+import Unit.Human.RangedCharacter.Shooter.Archer;
 import Unit.Human.RangedCharacter.Shooter.Crossbowman;
 import Unit.Human.RangedCharacter.Shooter.Sniper;
 
@@ -56,17 +57,13 @@ public class UnitManager {
     }
 
     enum UnitType {
-        PEASANT, SQUIRE, ROBBER, HUNTER, MONK, WITCH, CROSSBOWMAN, SNIPER
-        // Добавьте сюда другие классы-наследники, если они есть
+        PEASANT, SQUIRE, ROBBER, HUNTER, MONK, WITCH, CROSSBOWMAN, SNIPER, ARCHER
     }
 
     public static ArrayList<Unit> createUnitList(int sizeTeam, int x) {
 
         ArrayList<Unit> units = new ArrayList<>();
         Random random = new Random();
-
-        // Создаем объекты-наследники Unit случайным образом и добавляем их в список
-        // указанное количество раз
         for (int i = 0; i < sizeTeam; i++) {
             UnitType randomType = UnitType.values()[random.nextInt(UnitType.values().length)];
             switch (randomType) {
@@ -94,7 +91,9 @@ public class UnitManager {
                 case SNIPER:
                     units.add(new Sniper(getName(), x, i));
                     break;
-                // Добавьте случаи для других наследников, если они есть
+                case ARCHER:
+                    units.add(new Archer(getName(), x, i));
+                    break;
             }
         }
         return units;

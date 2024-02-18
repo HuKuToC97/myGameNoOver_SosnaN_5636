@@ -1,5 +1,7 @@
 package Unit;
 
+import java.util.ArrayList;
+
 import Unit.Auxiliary.Location2D;
 
 public abstract class Unit {
@@ -110,7 +112,7 @@ public abstract class Unit {
         System.out.println(String.format("'%s %s' lvl %d, %d HP", typeUnit, name, level, hitPoints));
     }
 
-    public void infoForSeminarSecond(){
+    public void infoForSeminarSecond() {
         System.out.println(String.format("'%s %s' lvl %d, %d HP, %s", typeUnit, name, level, hitPoints, location));
     }
 
@@ -141,7 +143,26 @@ public abstract class Unit {
         System.out.println(this + "- умер");
     }
 
+    public Unit findNearestEnemy(ArrayList<Unit> units) {
+        Unit nearestEnemy = null;
+        double minDistance = Double.MAX_VALUE;
+
+        for (Unit unit : units) {
+            if (unit != this && unit.getStatus() == Status.ALIVE) {
+                double distance = this.location.calculateDistance(unit.getLocation());
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    nearestEnemy = unit;
+                }
+            }
+        }
+
+        return nearestEnemy;
+    }
+
+    //
     // Getters and setters
+    //
     public Status getStatus() {
         return status;
     }

@@ -20,4 +20,9 @@ public class Location2D {
         return "x: " + x + ", y: " + y;
     }
     
+    public double calculateDistance(Location2D other) {
+        int deltaX = this.x - other.x;
+        int deltaY = this.y - other.y;
+        return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
 }
