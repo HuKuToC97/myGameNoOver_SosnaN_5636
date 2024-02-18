@@ -1,7 +1,7 @@
-package сreatures.Human.ContactCharacter.Worker;
+package Unit.Human.ContactCharacter.Worker;
 
-import сreatures.Auxiliary.Location2D;
-import сreatures.Human.ContactCharacter.ContactCharacter;
+import Unit.Auxiliary.Location2D;
+import Unit.Human.ContactCharacter.ContactCharacter;
 
 public abstract class Worker extends ContactCharacter{
     protected int calm;

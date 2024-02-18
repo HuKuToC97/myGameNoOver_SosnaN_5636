@@ -1,7 +1,7 @@
-package сreatures.Human.RangedCharacter.Confessor;
+package Unit.Human.RangedCharacter.Confessor;
 
-import сreatures.Auxiliary.Location2D;
-import сreatures.Human.RangedCharacter.RangedCharacter;
+import Unit.Auxiliary.Location2D;
+import Unit.Human.RangedCharacter.RangedCharacter;
 
 public abstract class Confessor extends RangedCharacter {
     protected int faith;

@@ -1,4 +1,4 @@
-package сreatures.Auxiliary;
+package Unit.Auxiliary;
 
 public class Location2D {
     int x;

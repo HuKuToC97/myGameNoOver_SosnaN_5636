@@ -1,7 +1,7 @@
-package сreatures.Human.ContactCharacter;
+package Unit.Human.ContactCharacter;
 
-import сreatures.Auxiliary.Location2D;
-import сreatures.Human.Human;
+import Unit.Auxiliary.Location2D;
+import Unit.Human.Human;
 
 public abstract class ContactCharacter extends Human{
 

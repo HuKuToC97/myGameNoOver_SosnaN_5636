@@ -1,7 +1,7 @@
-package сreatures.Human.RangedCharacter.Mage;
+package Unit.Human.RangedCharacter.Mage;
 
-import сreatures.Auxiliary.Location2D;
-import сreatures.Human.RangedCharacter.RangedCharacter;
+import Unit.Auxiliary.Location2D;
+import Unit.Human.RangedCharacter.RangedCharacter;
 
 public abstract class Mage extends RangedCharacter {
     protected int mana;

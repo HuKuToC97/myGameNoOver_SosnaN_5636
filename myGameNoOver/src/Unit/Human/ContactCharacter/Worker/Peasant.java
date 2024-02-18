@@ -1,6 +1,6 @@
-package сreatures.Human.ContactCharacter.Worker;
+package Unit.Human.ContactCharacter.Worker;
 
-import сreatures.Auxiliary.Location2D;
+import Unit.Auxiliary.Location2D;
 
 public class Peasant extends Worker {
 

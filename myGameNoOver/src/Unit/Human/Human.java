@@ -1,7 +1,7 @@
-package сreatures.Human;
+package Unit.Human;
 
-import сreatures.Unit;
-import сreatures.Auxiliary.Location2D;
+import Unit.Unit;
+import Unit.Auxiliary.Location2D;
 
 public abstract class Human extends Unit{
 

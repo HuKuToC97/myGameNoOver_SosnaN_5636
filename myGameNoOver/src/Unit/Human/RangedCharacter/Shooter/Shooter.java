@@ -1,7 +1,7 @@
-package сreatures.Human.RangedCharacter.Shooter;
+package Unit.Human.RangedCharacter.Shooter;
 
-import сreatures.Auxiliary.Location2D;
-import сreatures.Human.RangedCharacter.RangedCharacter;
+import Unit.Auxiliary.Location2D;
+import Unit.Human.RangedCharacter.RangedCharacter;
 
 public abstract class Shooter extends RangedCharacter {
     protected int concentration;

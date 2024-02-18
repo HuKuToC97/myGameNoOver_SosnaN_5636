@@ -1,7 +1,7 @@
-package сreatures.Animal;
+package Unit.Animal;
 
-import сreatures.Unit;
-import сreatures.Auxiliary.Location2D;
+import Unit.Unit;
+import Unit.Auxiliary.Location2D;
 
 public class Animal extends Unit {
     /**
@@ -33,11 +33,4 @@ public class Animal extends Unit {
         sustainability);
     }
 
-    @Override
-    public String toString() {
-        return "Animal [name=" + name + ", typeUnit=" + typeUnit + "]";
-    }
-    public void showInfoLabel(){
-        System.out.println(String.format("%s %s %d lvl: %d HP.", typeUnit, name, level, hitPoints));
-    }
 }

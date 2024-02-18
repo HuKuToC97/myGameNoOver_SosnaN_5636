@@ -1,7 +1,7 @@
-package сreatures.Human.RangedCharacter;
+package Unit.Human.RangedCharacter;
 
-import сreatures.Auxiliary.Location2D;
-import сreatures.Human.Human;
+import Unit.Auxiliary.Location2D;
+import Unit.Human.Human;
 
 public abstract class RangedCharacter extends Human{
     protected int accuracy;

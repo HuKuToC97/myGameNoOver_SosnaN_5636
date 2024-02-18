@@ -1,6 +1,6 @@
-package сreatures;
+package Unit;
 
-import сreatures.Auxiliary.Location2D;
+import Unit.Auxiliary.Location2D;
 
 public abstract class Unit {
     protected String name;
@@ -67,9 +67,9 @@ public abstract class Unit {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "Unit [name=" + name + ", typeСharacter=" + typeUnit + "]";
+        return typeUnit + " " + name;
     }
-    
+
     // @Override
     // public String toString() {
     // return "Unit [name=" + name + ", typeСharacter=" + typeUnit + ", level=" +
@@ -82,7 +82,94 @@ public abstract class Unit {
     // }
 
     public void showInfoLabel() {
-        System.out.println(String.format("%s %s %d lvl: %d HP.", typeUnit, name, level, hitPoints));
+        System.out.println(String.format("'%s %s' lvl %d, %d HP", typeUnit, name, level, hitPoints));
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTypeUnit() {
+        return typeUnit;
+    }
+
+    public void setTypeUnit(String typeUnit) {
+        this.typeUnit = typeUnit;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getExperiencePoints() {
+        return experiencePoints;
+    }
+
+    public void setExperiencePoints(int experiencePoints) {
+        this.experiencePoints = experiencePoints;
+    }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
+    public void setInitiative(int initiative) {
+        this.initiative = initiative;
+    }
+
+    public Location2D getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location2D location) {
+        this.location = location;
+    }
+
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public void setHitPoints(int hitPoints) {
+        this.hitPoints = hitPoints;
+    }
+
+    public int getMaxHitPoints() {
+        return maxHitPoints;
+    }
+
+    public void setMaxHitPoints(int maxHitPoints) {
+        this.maxHitPoints = maxHitPoints;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
+    public int getSustainability() {
+        return sustainability;
+    }
+
+    public void setSustainability(int sustainability) {
+        this.sustainability = sustainability;
+    }
 }
