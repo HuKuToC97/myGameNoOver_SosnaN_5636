@@ -8,8 +8,8 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
-        ArrayList<Unit> team1 = UnitManager.createUnitList(10,0);
-        ArrayList<Unit> team2 = UnitManager.createUnitList(10,9);
+        ArrayList<Unit> team1 = UnitManager.createUnitList(10, 0);
+        ArrayList<Unit> team2 = UnitManager.createUnitList(10, 9);
         for (Unit unit : team1) {
             unit.infoForSeminarSecond();
         }
@@ -18,6 +18,5 @@ public class App {
             unit.infoForSeminarSecond();
         }
 
-        
     }
 }
