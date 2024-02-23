@@ -4,6 +4,7 @@ import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 
 public class Animal extends Unit {
+    
     /**
      * Полный конструктор класса животное
      * 
@@ -44,6 +45,12 @@ public class Animal extends Unit {
                 new Location2D(),
                 hitPoints, maxHitPoints,
                 power, dexterity, sustainability);
+    }
+
+    @Override
+    public void step() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
     }
 
 }

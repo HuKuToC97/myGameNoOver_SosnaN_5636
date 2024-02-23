@@ -2,8 +2,8 @@ package Unit.Human.RangedCharacter.Shooter;
 
 import Unit.Auxiliary.Location2D;
 
-public class Archer extends Shooter{
-        public Archer(String name, String typeUnit,
+public class Archer extends Shooter {
+    public Archer(String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
             Location2D location,
@@ -11,7 +11,8 @@ public class Archer extends Shooter{
             int power, int dexterity, int sustainability,
             int accuracy, int rangeAttack,
             int concentration, int maxConcentration,
-            int ammunition, int maxAmmunition) {
+            int ammunition, int maxAmmunition,
+            int amountShotsInStep) {
         super(name, typeUnit,
                 level, experiencePoints,
                 initiative,
@@ -20,7 +21,8 @@ public class Archer extends Shooter{
                 power, dexterity, sustainability,
                 accuracy, rangeAttack,
                 concentration, maxConcentration,
-                ammunition, maxAmmunition);
+                ammunition, maxAmmunition,
+                amountShotsInStep);
     }
 
     public Archer(String name, String typeUnit,
@@ -31,7 +33,8 @@ public class Archer extends Shooter{
             int power, int dexterity, int sustainability,
             int accuracy, int rangeAttack,
             int maxConcentration,
-            int ammunition, int maxAmmunition) {
+            int ammunition, int maxAmmunition,
+            int amountShotsInStep) {
         this(name, typeUnit,
                 level, experiencePoints,
                 initiative,
@@ -40,7 +43,8 @@ public class Archer extends Shooter{
                 power, dexterity, sustainability,
                 accuracy, rangeAttack,
                 maxConcentration, maxConcentration,
-                ammunition, maxAmmunition);
+                ammunition, maxAmmunition,
+                amountShotsInStep);
     }
 
     public Archer(String name, int x, int y) {
@@ -52,18 +56,24 @@ public class Archer extends Shooter{
                 10, 10, 10,
                 100, 100,
                 100,
-                0, 100);
+                0, 100,
+                5);
     }
 
     public Archer(String name) {
-        this(name, "Лучник",
-                1, 0,
-                10,
-                new Location2D(),
-                100,
-                10, 10, 10,
-                100, 100,
-                100,
-                0, 100);
+        this(name,
+                0, 0);
     }
+
+
+    @Override
+    public void step() {
+        if (!isDead) {
+            if (getAmmunition() > 0) {
+                callSquire();
+            }
+        }
+    }
+    public void callSquire(){};
+
 }

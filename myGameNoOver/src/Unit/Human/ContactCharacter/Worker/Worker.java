@@ -4,8 +4,25 @@ import Unit.Auxiliary.Location2D;
 import Unit.Human.ContactCharacter.ContactCharacter;
 
 public abstract class Worker extends ContactCharacter {
-    protected int calm;
-    protected int maxCalm;
+    private int calm;
+    
+    public int getCalm() {
+        return calm;
+    }
+
+    public void setCalm(int calm) {
+        this.calm = calm;
+    }
+
+    private int maxCalm;
+
+    public int getMaxCalm() {
+        return maxCalm;
+    }
+
+    public void setMaxCalm(int maxCalm) {
+        this.maxCalm = maxCalm;
+    }
 
     /**
      * Полный конструктор

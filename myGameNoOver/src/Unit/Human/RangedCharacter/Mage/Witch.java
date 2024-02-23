@@ -41,7 +41,7 @@ public class Witch extends Mage {
 
     public Witch(String name, int x, int y) {
         this(name, "Witch (Колдун)",
-                1, 0,
+                DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 10,
                 new Location2D(x, y),
                 100,
@@ -51,17 +51,17 @@ public class Witch extends Mage {
     }
 
     public Witch(String name) {
-        this(name, "Колдун",
-                1, 0,
-                10,
-                new Location2D(),
-                100,
-                10, 10, 10,
-                100, 100,
-                100);
+        this(name,
+                0, 0);
     }
 
     public void conjure() {
 
+    }
+
+    @Override
+    public void step() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
     }
 }

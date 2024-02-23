@@ -50,7 +50,7 @@ public class Squire extends Worker {
 
     public Squire(String name, int x, int y) {
         this(name, "Оруженосец",
-                1, 0,
+                DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 10,
                 new Location2D(x, y),
                 100,
@@ -60,18 +60,18 @@ public class Squire extends Worker {
     }
 
     public Squire(String name) {
-        this(name, "Оруженосец",
-                1, 0,
-                10,
-                new Location2D(),
-                100,
-                10, 10, 10,
-                1000,
-                0);
+        this(name,
+                0, 0);
     }
 
     public void bringAmmunation() {
-        initiative = initiative * (1 - (fatigue / 100));
+        setInitiative(getInitiative() * (1 - (fatigue / 100)));
         fatigue = fatigue--;
+    }
+
+    @Override
+    public void step() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
     };
 }

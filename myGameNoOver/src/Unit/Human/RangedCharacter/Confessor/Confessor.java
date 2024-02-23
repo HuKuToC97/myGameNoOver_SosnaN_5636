@@ -4,8 +4,25 @@ import Unit.Auxiliary.Location2D;
 import Unit.Human.RangedCharacter.RangedCharacter;
 
 public abstract class Confessor extends RangedCharacter {
-    protected int faith;
-    protected int maxFaith;
+    private int faith;
+    
+    public int getFaith() {
+        return faith;
+    }
+
+    public void setFaith(int faith) {
+        this.faith = faith;
+    }
+
+    private int maxFaith;
+
+    public int getMaxFaith() {
+        return maxFaith;
+    }
+
+    public void setMaxFaith(int maxFaith) {
+        this.maxFaith = maxFaith;
+    }
 
     public Confessor(String name, String typeUnit,
             int level, int experiencePoints,

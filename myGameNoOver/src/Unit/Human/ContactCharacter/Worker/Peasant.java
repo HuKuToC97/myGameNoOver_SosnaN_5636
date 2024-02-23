@@ -38,7 +38,7 @@ public class Peasant extends Worker {
 
     public Peasant(String name, int x, int y) {
         this(name, "Крестьянин",
-                1, 0,
+                DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 10,
                 new Location2D(x, y),
                 100,
@@ -47,21 +47,22 @@ public class Peasant extends Worker {
     }
 
     public Peasant(String name) {
-        this(name, "Крестьянин",
-                1, 0,
-                10,
-                new Location2D(),
-                100,
-                10, 10, 10,
-                1000);
+        this(name,
+                0, 0);
     }
 
     public void work() {
-        if (calm < maxCalm) {
-            calm++;
+        if (getCalm() < getMaxCalm()) {
+            setCalm(getCalm() + 1);
         } else {
-            calm = maxCalm;
+            setCalm(getMaxCalm());
         }
+    }
+
+    @Override
+    public void step() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
     }
 
 }

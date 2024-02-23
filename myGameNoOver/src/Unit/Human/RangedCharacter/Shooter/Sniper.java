@@ -11,7 +11,8 @@ public class Sniper extends Shooter {
             int power, int dexterity, int sustainability,
             int accuracy, int rangeAttack,
             int concentration, int maxConcentration,
-            int ammunition, int maxAmmunition) {
+            int ammunition, int maxAmmunition,
+            int amountShotsInStep) {
         super(name, typeUnit,
                 level, experiencePoints,
                 initiative,
@@ -20,7 +21,8 @@ public class Sniper extends Shooter {
                 power, dexterity, sustainability,
                 accuracy, rangeAttack,
                 concentration, maxConcentration,
-                ammunition, maxAmmunition);
+                ammunition, maxAmmunition,
+                amountShotsInStep);
     }
 
     public Sniper(String name, String typeUnit,
@@ -31,7 +33,8 @@ public class Sniper extends Shooter {
             int power, int dexterity, int sustainability,
             int accuracy, int rangeAttack,
             int maxConcentration,
-            int ammunition, int maxAmmunition) {
+            int ammunition, int maxAmmunition,
+            int amountShotsInStep) {
         this(name, typeUnit,
                 level, experiencePoints,
                 initiative,
@@ -40,7 +43,8 @@ public class Sniper extends Shooter {
                 power, dexterity, sustainability,
                 accuracy, rangeAttack,
                 maxConcentration, maxConcentration,
-                ammunition, maxAmmunition);
+                ammunition, maxAmmunition,
+                amountShotsInStep);
     }
 
     public Sniper(String name, int x, int y) {
@@ -52,22 +56,22 @@ public class Sniper extends Shooter {
                 10, 10, 10,
                 100, 100,
                 100,
-                0, 100);
+                0, 100,
+                3);
     }
 
     public Sniper(String name) {
-        this(name, "Снайпер",
-                1, 0,
-                10,
-                new Location2D(),
-                100,
-                10, 10, 10,
-                100, 100,
-                100,
-                0, 100);
+        this(name,
+                0, 0);
     }
 
     public void shotToFly() {
 
+    }
+
+    @Override
+    public void step() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
     }
 }

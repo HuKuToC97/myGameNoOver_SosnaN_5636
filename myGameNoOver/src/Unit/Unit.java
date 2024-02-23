@@ -4,28 +4,28 @@ import java.util.ArrayList;
 
 import Unit.Auxiliary.Location2D;
 
-public abstract class Unit {
+public abstract class Unit implements UnitInterface {
     protected boolean isDead;
 
-    protected String name;
-    protected String typeUnit;
+    private String name;
+    private String typeUnit;
 
-    protected int level;
-    protected int experiencePoints;
-    protected int initiative;
+    private int level;
+    private int experiencePoints;
+    private int initiative;
 
-    protected Location2D location;
+    private Location2D location;
 
-    protected int hitPoints;
-    protected int maxHitPoints;
+    private int hitPoints;
+    private int maxHitPoints;
 
-    protected int power;
-    protected int dexterity;
-    protected int sustainability;
+    private int power;
+    private int dexterity;
+    private int sustainability;
 
     // Определяем константы для удобства чтения кода
-    private static final int DEFAULT_LEVEL = 1;
-    private static final int DEFAULT_EXPERIENCE_POINTS = 0;
+    protected static final int DEFAULT_LEVEL = 1;
+    protected static final int DEFAULT_EXPERIENCE_POINTS = 0;
 
     /**
      * Полный конструктор для класса Unit
@@ -70,7 +70,7 @@ public abstract class Unit {
             int hitPoints, int maxHitPoints,
             int power, int dexterity, int sustainability) {
         this(false, name, typeUnit,
-                1, 0,
+                DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 initiative,
                 location,
                 maxHitPoints, maxHitPoints,

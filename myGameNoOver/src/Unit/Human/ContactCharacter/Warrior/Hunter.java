@@ -3,6 +3,8 @@ package Unit.Human.ContactCharacter.Warrior;
 import Unit.Auxiliary.Location2D;
 
 public class Hunter extends Warrior {
+
+
     public Hunter(String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
@@ -37,7 +39,7 @@ public class Hunter extends Warrior {
 
     public Hunter(String name, int x, int y) {
         this(name, "Hunter (Охотник)",
-                1, 0,
+                DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 10,
                 new Location2D(x, y),
                 100,
@@ -46,16 +48,17 @@ public class Hunter extends Warrior {
     }
 
     public Hunter(String name) {
-        this(name, "Охотник",
-                1, 0,
-                10,
-                new Location2D(),
-                100,
-                10, 10, 10,
-                1000);
+        this(name,
+                0, 0);
     }
 
     public void catchInNet() {
 
+    }
+
+    @Override
+    public void step() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
     }
 }

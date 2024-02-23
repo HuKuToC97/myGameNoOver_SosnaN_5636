@@ -4,8 +4,24 @@ import Unit.Auxiliary.Location2D;
 import Unit.Human.RangedCharacter.RangedCharacter;
 
 public abstract class Mage extends RangedCharacter {
-    protected int mana;
-    protected int maxMana;
+    private int mana;
+    private int maxMana;
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    public void setMaxMana(int maxMana) {
+        this.maxMana = maxMana;
+    }
 
     public Mage(String name, String typeUnit, int level, int experiencePoints, int initiative,
             Location2D location, int hitPoints, int maxHitPoints, int power, int dexterity, int sustainability,
