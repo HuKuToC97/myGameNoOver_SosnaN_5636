@@ -5,24 +5,8 @@ import Unit.Human.ContactCharacter.ContactCharacter;
 
 public abstract class Worker extends ContactCharacter {
     private int calm;
-    
-    public int getCalm() {
-        return calm;
-    }
-
-    public void setCalm(int calm) {
-        this.calm = calm;
-    }
 
     private int maxCalm;
-
-    public int getMaxCalm() {
-        return maxCalm;
-    }
-
-    public void setMaxCalm(int maxCalm) {
-        this.maxCalm = maxCalm;
-    }
 
     /**
      * Полный конструктор
@@ -58,4 +42,25 @@ public abstract class Worker extends ContactCharacter {
         this.maxCalm = maxCalm;
 
     }
+
+    //
+    // Getters and setters
+    //
+
+    public int getCalm() {
+        return calm;
+    }
+
+    public void setCalm(int calm) {
+        this.calm = calm;
+    }
+
+    public int getMaxCalm() {
+        return maxCalm;
+    }
+
+    public void setMaxCalm(int maxCalm) {
+        this.maxCalm = maxCalm;
+    }
+
 }

@@ -53,13 +53,13 @@ public class Crossbowman extends Shooter {
     public Crossbowman(String name, int x, int y) {
         this(name, "Crossbowman (Арбалетчик)",
                 1, 0,
-                10,
+                3,
                 new Location2D(x, y),
                 100,
                 10, 10, 10,
                 100, 100,
                 100,
-                0, 100,
+                5, 20,
                 1);
     }
 
@@ -74,7 +74,6 @@ public class Crossbowman extends Shooter {
 
     @Override
     public void step(ArrayList<Unit> list) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        attack(list);
     }
 }

@@ -45,7 +45,7 @@ public class Monk extends Confessor {
     public Monk(String name, int x, int y) {
         this(name, "Monk (Монах)",
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
-                10,
+                1,
                 new Location2D(x, y),
                 100,
                 10, 10, 10,
@@ -64,7 +64,6 @@ public class Monk extends Confessor {
 
     @Override
     public void step(ArrayList<Unit> list) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        System.out.println(String.format("%s мог бы атаковать", this));
     }
 }

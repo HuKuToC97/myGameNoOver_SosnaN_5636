@@ -113,10 +113,10 @@ public abstract class Unit implements UnitInterface {
     }
 
     public void infoForSeminarSecond() {
-        System.out.println(String.format("'%s %s' lvl %d, %d HP, %s", typeUnit, name, level, hitPoints, location));
+        System.out.println(String.format("'%s %s' %d HP, isDead: %b", typeUnit, name, hitPoints, isDead));
     }
 
-    public void getDamage(Unit unit) {
+    protected void getDamage(Unit unit) {
         int amountDamage = calculateGetDamage();
         unit.takeDamage(amountDamage);
     }
@@ -145,6 +145,7 @@ public abstract class Unit implements UnitInterface {
     }
 
     public void dead() {
+        hitPoints = 0;
         isDead = true;
         System.out.println(this + "- пал в неравном бою");
     }

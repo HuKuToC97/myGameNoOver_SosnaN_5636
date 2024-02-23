@@ -53,13 +53,13 @@ public class Sniper extends Shooter {
     public Sniper(String name, int x, int y) {
         this(name, "Sniper (Снайпер)",
                 1, 0,
-                10,
+                3,
                 new Location2D(x, y),
                 100,
                 10, 10, 10,
                 100, 100,
                 100,
-                0, 100,
+                10, 100,
                 3);
     }
 
@@ -74,7 +74,6 @@ public class Sniper extends Shooter {
 
     @Override
     public void step(ArrayList<Unit> list) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        attack(list);
     }
 }

@@ -42,7 +42,7 @@ public class Robber extends Warrior {
     public Robber(String name, int x, int y) {
         this(name, "Robber (Разбойник)",
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
-                10,
+                2,
                 new Location2D(x, y),
                 100,
                 10, 10, 10,
@@ -60,7 +60,6 @@ public class Robber extends Warrior {
 
     @Override
     public void step(ArrayList<Unit> list) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        System.out.println(String.format("%s мог бы атаковать", this));
     };
 }

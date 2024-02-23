@@ -54,13 +54,13 @@ public class Archer extends Shooter {
     public Archer(String name, int x, int y) {
         this(name, "Archer (Лучник)",
                 1, 0,
-                10,
+                3,
                 new Location2D(x, y),
                 100,
                 10, 10, 10,
                 100, 100,
                 100,
-                0, 100,
+                5, 20,
                 5);
     }
 
@@ -72,7 +72,7 @@ public class Archer extends Shooter {
     @Override
     public void step(ArrayList<Unit> list) {
       attack(list);
-      
+
     }
 
 
