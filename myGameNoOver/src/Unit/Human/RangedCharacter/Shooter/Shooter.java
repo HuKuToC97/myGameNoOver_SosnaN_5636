@@ -1,5 +1,8 @@
 package Unit.Human.RangedCharacter.Shooter;
 
+import java.util.ArrayList;
+
+import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 import Unit.Human.RangedCharacter.RangedCharacter;
 
@@ -9,6 +12,42 @@ public abstract class Shooter extends RangedCharacter {
     private int ammunition;
     private int maxAmmunition;
     private int amountShotsInStep;
+
+    @Override
+    public void getDamage(Unit unit) {
+        ammunition--;
+        int amountDamage = calculateDamage();
+        unit.takeDamage(amountDamage);
+    }
+
+    private int calculateDamage() {
+        return getPower() * (1 + getDexterity() / 100);
+    }
+
+    protected void attack(ArrayList<Unit> list) {
+        if (!getIsDead()) {
+            if (getAmmunition() > 0) {
+                callSquire(list);
+            } else {
+                while (checkGotAmmunation()) {
+                    getDamage(findNearestEnemy(list));
+                }
+
+            }
+        }
+    }
+
+    public void callSquire(ArrayList<Unit> list) {
+        System.out.println("findSquire();");
+
+    };
+
+    private boolean checkGotAmmunation() {
+        if (ammunition > 0) {
+            return true;
+        }
+        return false;
+    }
 
     public int getConcentration() {
         return concentration;

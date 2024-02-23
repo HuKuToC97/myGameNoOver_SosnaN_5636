@@ -1,5 +1,9 @@
 package Unit.Human.RangedCharacter.Shooter;
 
+import java.util.ArrayList;
+
+import Unit.Unit;
+// import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 
 public class Archer extends Shooter {
@@ -65,15 +69,13 @@ public class Archer extends Shooter {
                 0, 0);
     }
 
-
     @Override
-    public void step() {
-        if (!isDead) {
-            if (getAmmunition() > 0) {
-                callSquire();
-            }
-        }
+    public void step(ArrayList<Unit> list) {
+      attack(list);
+      
     }
-    public void callSquire(){};
+
+
+
 
 }

@@ -1,5 +1,8 @@
 package Unit.Human.RangedCharacter.Shooter;
 
+import java.util.ArrayList;
+
+import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 
 public class Crossbowman extends Shooter {
@@ -70,7 +73,7 @@ public class Crossbowman extends Shooter {
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<Unit> list) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'step'");
     }

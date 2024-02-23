@@ -1,5 +1,8 @@
 package Unit.Human.RangedCharacter.Confessor;
 
+import java.util.ArrayList;
+
+import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 
 public class Monk extends Confessor {
@@ -60,7 +63,7 @@ public class Monk extends Confessor {
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<Unit> list) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'step'");
     }

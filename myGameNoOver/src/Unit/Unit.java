@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Unit.Auxiliary.Location2D;
 
 public abstract class Unit implements UnitInterface {
-    protected boolean isDead;
+    private boolean isDead;
 
     private String name;
     private String typeUnit;

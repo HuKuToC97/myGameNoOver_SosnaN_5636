@@ -1,5 +1,8 @@
 package Unit.Human.ContactCharacter.Warrior;
 
+import java.util.ArrayList;
+
+import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 
 public class Robber extends Warrior {
@@ -56,7 +59,7 @@ public class Robber extends Warrior {
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<Unit> list) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'step'");
     };
