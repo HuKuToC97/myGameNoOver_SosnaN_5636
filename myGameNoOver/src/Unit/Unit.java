@@ -117,17 +117,23 @@ public abstract class Unit implements UnitInterface {
     }
 
     public void getDamage(Unit unit) {
-        int amountDamage = calculateDamage();
+        int amountDamage = calculateGetDamage();
         unit.takeDamage(amountDamage);
     }
 
-    private int calculateDamage() {
+    private int calculateGetDamage() {
         return power * (1 + dexterity / 100);
     }
 
-    public void takeDamage(int amountDamage) {
-        hitPoints = hitPoints - (amountDamage * (sustainability / 100));
-        sustainability = sustainability - 10;
+    private int calculateTakeDamage(int amountDamage) {
+        return (amountDamage * (1 - (sustainability / 100)));
+    }
+
+    public void takeDamage(int amountGetDamage) {
+        int tempCalculateTakeDamage = calculateTakeDamage(amountGetDamage);
+        System.out.println(String.format("%s получает %d урона", this, tempCalculateTakeDamage));
+        hitPoints = hitPoints - tempCalculateTakeDamage;
+        sustainability = sustainability - 1;
         if (hitPoints > maxHitPoints)
             hitPoints = maxHitPoints;
 
@@ -140,7 +146,7 @@ public abstract class Unit implements UnitInterface {
 
     public void dead() {
         isDead = true;
-        System.out.println(this + "- умер");
+        System.out.println(this + "- пал в неравном бою");
     }
 
     public Unit findNearestEnemy(ArrayList<Unit> units) {

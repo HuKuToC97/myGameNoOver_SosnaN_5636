@@ -21,6 +21,11 @@ public class App {
         System.out.println("---------");
         System.out.println(team1.get(0).findNearestEnemy(team2));
     }
+
+
+
+
+    
     public static void hello(){
         System.out.println("////////////////////////////////////////////////////////////////////\nНовая генерация\n");
     }

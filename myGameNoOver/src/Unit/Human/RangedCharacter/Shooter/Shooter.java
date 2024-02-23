@@ -16,11 +16,12 @@ public abstract class Shooter extends RangedCharacter {
     @Override
     public void getDamage(Unit unit) {
         ammunition--;
-        int amountDamage = calculateDamage();
+        int amountDamage = calculateGetDamage();
+        System.out.println(String.format("%s атакует %s", this, unit));
         unit.takeDamage(amountDamage);
     }
 
-    private int calculateDamage() {
+    private int calculateGetDamage() {
         return getPower() * (1 + getDexterity() / 100);
     }
 
@@ -38,6 +39,7 @@ public abstract class Shooter extends RangedCharacter {
     }
 
     public void callSquire(ArrayList<Unit> list) {
+        System.out.println(String.format("У %s нечем атаковать, нужен оруженосец", this));
         System.out.println("findSquire();");
 
     };
