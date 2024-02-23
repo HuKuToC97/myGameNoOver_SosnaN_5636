@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Unit.Auxiliary.Location2D;
 
 public abstract class Unit {
-    protected Status status;
+    protected boolean isDead;
 
     protected String name;
     protected String typeUnit;
@@ -42,14 +42,14 @@ public abstract class Unit {
      * @param dexterity        Ловкость
      * @param sustainability   Устойчивость
      */
-    public Unit(Status status,
+    public Unit(boolean isDead,
             String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
             Location2D location,
             int hitPoints, int maxHitPoints,
             int power, int dexterity, int sustainability) {
-        this.status = status;
+        this.isDead = isDead;
         this.name = name;
         this.typeUnit = typeUnit;
         this.level = level;
@@ -69,7 +69,7 @@ public abstract class Unit {
             Location2D location,
             int hitPoints, int maxHitPoints,
             int power, int dexterity, int sustainability) {
-        this(Status.ALIVE, name, typeUnit,
+        this(false, name, typeUnit,
                 1, 0,
                 initiative,
                 location,
@@ -82,7 +82,7 @@ public abstract class Unit {
             Location2D location,
             int maxHitPoints,
             int power, int dexterity, int sustainability) {
-        this(Status.ALIVE, name, typeUnit,
+        this(false, name, typeUnit,
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 initiative,
                 location,
@@ -94,7 +94,7 @@ public abstract class Unit {
             int initiative,
             int maxHitPoints,
             int power, int dexterity, int sustainability) {
-        this(Status.ALIVE,
+        this(false,
                 name, typeUnit,
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 initiative,
@@ -139,7 +139,7 @@ public abstract class Unit {
     }
 
     public void dead() {
-        status = Status.DEAD;
+        isDead = true;
         System.out.println(this + "- умер");
     }
 
@@ -148,7 +148,7 @@ public abstract class Unit {
         double minDistance = Double.MAX_VALUE;
 
         for (Unit unit : units) {
-            if (unit != this && unit.getStatus() == Status.ALIVE) {
+            if (unit != this && unit.getIsDead() == false) {
                 double distance = this.location.calculateDistance(unit.getLocation());
                 if (distance < minDistance) {
                     minDistance = distance;
@@ -163,12 +163,12 @@ public abstract class Unit {
     //
     // Getters and setters
     //
-    public Status getStatus() {
-        return status;
+    public boolean getIsDead() {
+        return isDead;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setIsDead(boolean isDead) {
+        this.isDead = isDead;
     }
 
     public String getName() {
