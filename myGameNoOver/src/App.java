@@ -21,14 +21,18 @@ public class App {
         allUnits.addAll(team1);
         allUnits.addAll(team2);
 
+        System.out.println(team1);
+        System.out.println(team2);
+
+
+
         showTeam(allUnits);
 
         allUnits.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
 
         showTeam(allUnits);
 
-        stepApp(allUnits);
-
+        stepApp(allUnits, team1, team2);
 
     }
 
@@ -39,13 +43,17 @@ public class App {
         System.out.println("-".repeat(16));
     }
 
-    public static void stepApp(ArrayList<Unit> allUnits) {
+    public static void stepApp(ArrayList<Unit> allUnits, ArrayList<Unit> team1, ArrayList<Unit> team2) {
         try {
             int delayInMillis = 500;
             int countSteps = 1;
             for (Unit unit : allUnits) {
                 System.out.println(String.format("Шаг %d:", countSteps));
-                unit.step(allUnits);
+                if (team1.contains(unit)) {
+                    unit.step(team2);
+                } else {
+                    unit.step(team1);
+                }
                 System.out.println("-".repeat(16));
                 countSteps++;
                 Thread.sleep(delayInMillis);
@@ -56,8 +64,6 @@ public class App {
         }
     }
 
-
-    
     public static void hello() {
         System.out.println("/".repeat(16));
         System.out.println("Новая генерация\n");
