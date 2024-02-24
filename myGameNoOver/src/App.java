@@ -56,6 +56,8 @@ public class App {
         }
     }
 
+
+    
     public static void hello() {
         System.out.println("/".repeat(16));
         System.out.println("Новая генерация\n");
