@@ -41,7 +41,7 @@ public class App {
 
     public static void stepApp(ArrayList<Unit> allUnits) {
         try {
-            int delayInMillis = 1000;
+            int delayInMillis = 500;
             int countSteps = 1;
             for (Unit unit : allUnits) {
                 System.out.println(String.format("Шаг %d:", countSteps));
