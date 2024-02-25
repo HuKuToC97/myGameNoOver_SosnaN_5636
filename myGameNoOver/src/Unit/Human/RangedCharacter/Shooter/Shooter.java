@@ -55,11 +55,9 @@ public abstract class Shooter extends RangedCharacter {
                 callSquire(list);
             } else {
                 int countShots = amountShotsInStep;
-                while (countShots > 0) {
-                    if (checkGotAmmunation(list)) {
-                        getDamage(findNearestEnemy(list));
-                        countShots--;
-                    }
+                while (checkGotAmmunation(list) && countShots > 0) {
+                    getDamage(findNearestEnemy(list));
+                    countShots--;
                 }
             }
         }
