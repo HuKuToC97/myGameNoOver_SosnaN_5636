@@ -8,7 +8,7 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
-        hello();
+        printHelloUser();
         ArrayList<Unit> team1 = UnitManager.createUnitList(10, 0);
         ArrayList<Unit> team2 = UnitManager.createUnitList(10, 9);
 
@@ -26,17 +26,17 @@ public class App {
 
 
 
-        showTeam(allUnits);
+        printTeam(allUnits);
 
         allUnits.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
 
-        showTeam(allUnits);
+        printTeam(allUnits);
 
         stepApp(allUnits, team1, team2);
 
     }
 
-    public static void showTeam(ArrayList<Unit> team) {
+    public static void printTeam(ArrayList<Unit> team) {
         for (Unit unit : team) {
             unit.infoForSeminarSecond();
         }
@@ -64,7 +64,7 @@ public class App {
         }
     }
 
-    public static void hello() {
+    public static void printHelloUser() {
         System.out.println("/".repeat(16));
         System.out.println("Новая генерация\n");
     }

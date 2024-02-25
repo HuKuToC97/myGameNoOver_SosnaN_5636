@@ -1,5 +1,8 @@
 package Unit.Human.ContactCharacter.Warrior;
 
+import java.util.ArrayList;
+
+import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 import Unit.Human.ContactCharacter.ContactCharacter;
 
@@ -16,6 +19,11 @@ public abstract class Warrior extends ContactCharacter {
         this.endurance = endurance;
         this.maxEndurance = maxEndurance;
     }
+
+    public void step(ArrayList<Unit> list){
+        
+    }
+
 
     //
     // Getters and setters
