@@ -42,22 +42,32 @@ public class App {
     }
 
     public static boolean checkEnd() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Нажмите Enter для следующего хода или введите stop для завершения битвы:");
-
-        try (Scanner scanner = new Scanner(System.in)) {
-            while (true) {
+    
+        while (true) {
+            if (System.console() == null) {
+                // Если консоль не поддерживает ввод, используем Scanner
                 if (scanner.hasNextLine()) {
                     String input = scanner.nextLine();
                     if (input.equalsIgnoreCase("stop")) {
                         return false; // Завершаем битву
-                    } else if (input.equalsIgnoreCase("")) {
+                    } else if (input.trim().isEmpty()) {
+                        return true; // Продолжаем битву
+                    }
+                }
+            } else {
+                // Иначе используем консольный ввод
+                String input = System.console().readLine();
+                if (input != null) {
+                    input = input.trim(); // Убираем лишние пробелы
+                    if (input.equalsIgnoreCase("stop")) {
+                        return false; // Завершаем битву
+                    } else if (input.isEmpty()) {
                         return true; // Продолжаем битву
                     }
                 }
             }
-        } catch (Exception e) {
-            System.err.println("Ошибка ввода: " + e.getMessage());
-            return false; // Прерываем битву из-за ошибки ввода
         }
     }
 
