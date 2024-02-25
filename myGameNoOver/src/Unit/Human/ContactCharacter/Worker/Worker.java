@@ -1,8 +1,5 @@
 package Unit.Human.ContactCharacter.Worker;
 
-import java.util.ArrayList;
-
-import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 import Unit.Human.ContactCharacter.ContactCharacter;
 
