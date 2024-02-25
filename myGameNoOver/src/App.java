@@ -1,6 +1,5 @@
 import java.io.Console;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import Unit.Unit;
 import UnitManager.UnitManager;
@@ -70,9 +69,9 @@ public class App {
             for (Unit unit : allUnits) {
                 System.out.println(String.format("Подшаг %d:", countSteps));
                 if (team1.contains(unit)) {
-                    unit.step(team2);
+                    unit.step(team2, team1);
                 } else {
-                    unit.step(team1);
+                    unit.step(team1, team2);
                 }
                 // System.out.println("-".repeat(16));
                 countSteps++;

@@ -49,21 +49,21 @@ public abstract class Shooter extends RangedCharacter {
         return getPower() * (1 + getDexterity() / 100);
     }
 
-    protected void attack(ArrayList<Unit> list) {
+    protected void attack(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
         if ((!getIsDead())) {
             if (getAmmunition() <= 0) {
-                callSquire(list);
+                callSquire(alliedUnits);
             } else {
                 int countShots = amountShotsInStep;
-                while (checkGotAmmunation(list) && countShots > 0) {
-                    getDamage(findNearestEnemy(list));
+                while (checkGotAmmunation(alliedUnits) && countShots > 0) {
+                    getDamage(findNearestEnemy(enemyUnits));
                     countShots--;
                 }
             }
         }
     }
 
-    protected void callSquire(ArrayList<Unit> list) {
+    protected void callSquire(ArrayList<Unit> alliedUnits) {
         System.out.println(String.format("У %s нечем атаковать, нужен оруженосец", this));
         System.out.println("findSquire();");
 
@@ -77,9 +77,10 @@ public abstract class Shooter extends RangedCharacter {
         return false;
     }
 
-    public void step(ArrayList<Unit> list) {
+    @Override
+    public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
         if (!getIsDead()) {
-            attack(list);
+            attack(enemyUnits, alliedUnits);
         }
     }
 

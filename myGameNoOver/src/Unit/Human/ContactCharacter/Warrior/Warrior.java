@@ -21,8 +21,10 @@ public abstract class Warrior extends ContactCharacter {
     }
 
     @Override
-    public void step(ArrayList<Unit> list) {
-        System.out.println(String.format("%s мог бы атаковать", this));
+    public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
+        if (!getIsDead()) {
+            System.out.println(String.format("%s мог бы атаковать", this));
+        }
     }
 
     //

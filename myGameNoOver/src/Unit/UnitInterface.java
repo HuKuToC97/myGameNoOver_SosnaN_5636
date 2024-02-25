@@ -7,5 +7,5 @@ public interface UnitInterface {
     //     isDead = true;
     //     System.out.println(this + "- умер");
     // }
-    public void step(ArrayList<Unit> target);
+    public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits);
 }

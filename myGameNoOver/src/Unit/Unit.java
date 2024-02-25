@@ -167,7 +167,7 @@ public abstract class Unit implements UnitInterface {
         return nearestEnemy;
     }
 
-    public void step(ArrayList<Unit> list) {
+    public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
         if (!getIsDead()) {
             System.out.println(String.format("%s мог бы атаковать", this));
         }
