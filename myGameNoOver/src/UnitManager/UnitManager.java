@@ -56,10 +56,6 @@ public class UnitManager {
         return units;
     }
 
-    enum UnitType {
-        PEASANT, SQUIRE, ROBBER, HUNTER, MONK, WITCH, CROSSBOWMAN, SNIPER, ARCHER
-    }
-
     public static ArrayList<Unit> createUnitList(int sizeTeam, int x) {
 
         ArrayList<Unit> units = new ArrayList<>();
@@ -97,6 +93,10 @@ public class UnitManager {
             }
         }
         return units;
+    }
+
+    enum UnitType {
+        PEASANT, SQUIRE, ROBBER, HUNTER, MONK, WITCH, CROSSBOWMAN, SNIPER, ARCHER
     }
 
     private static String getName() {

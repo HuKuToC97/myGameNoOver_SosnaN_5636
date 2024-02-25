@@ -7,22 +7,6 @@ public abstract class RangedCharacter extends Human {
     private int accuracy;
     private int rangeAttack;
 
-    public int getAccuracy() {
-        return accuracy;
-    }
-
-    public void setAccuracy(int accuracy) {
-        this.accuracy = accuracy;
-    }
-
-    public int getRangeAttack() {
-        return rangeAttack;
-    }
-
-    public void setRangeAttack(int rangeAttack) {
-        this.rangeAttack = rangeAttack;
-    }
-
     /**
      * Полный конструктор класса животное
      * 
@@ -46,6 +30,26 @@ public abstract class RangedCharacter extends Human {
         super(name, typeUnit, level, experiencePoints, initiative, location, hitPoints, maxHitPoints, power, dexterity,
                 sustainability);
         this.accuracy = accuracy;
+        this.rangeAttack = rangeAttack;
+    }
+
+    //
+    // Getters and setters
+    //
+
+    public int getAccuracy() {
+        return accuracy;
+    }
+
+    public void setAccuracy(int accuracy) {
+        this.accuracy = accuracy;
+    }
+
+    public int getRangeAttack() {
+        return rangeAttack;
+    }
+
+    public void setRangeAttack(int rangeAttack) {
         this.rangeAttack = rangeAttack;
     }
 

@@ -8,14 +8,6 @@ import Unit.Auxiliary.Location2D;
 public class Squire extends Worker {
     private int fatigue;
 
-    public int getFatigue() {
-        return fatigue;
-    }
-
-    public void setFatigue(int fatigue) {
-        this.fatigue = fatigue;
-    }
-
     public Squire(String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
@@ -76,4 +68,16 @@ public class Squire extends Worker {
     public void step(ArrayList<Unit> list) {
         System.out.println(String.format("%s мог бы атаковать", this));
     };
+
+    //
+    // Getters and setters
+    //
+    public int getFatigue() {
+        return fatigue;
+    }
+
+    public void setFatigue(int fatigue) {
+        this.fatigue = fatigue;
+    }
+
 }

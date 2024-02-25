@@ -7,6 +7,21 @@ public abstract class Mage extends RangedCharacter {
     private int mana;
     private int maxMana;
 
+    public Mage(String name, String typeUnit, int level, int experiencePoints, int initiative,
+            Location2D location, int hitPoints, int maxHitPoints, int power, int dexterity, int sustainability,
+            int accuracy, int rangeAttack,
+            int mana, int maxMana) {
+        super(name, typeUnit, level, experiencePoints, initiative, location, hitPoints, maxHitPoints, power, dexterity,
+                sustainability, accuracy, rangeAttack);
+        this.mana = mana;
+        this.maxMana = maxMana;
+
+    }
+
+    //
+    // Getters and setters
+    //
+
     public int getMana() {
         return mana;
     }
@@ -21,16 +36,5 @@ public abstract class Mage extends RangedCharacter {
 
     public void setMaxMana(int maxMana) {
         this.maxMana = maxMana;
-    }
-
-    public Mage(String name, String typeUnit, int level, int experiencePoints, int initiative,
-            Location2D location, int hitPoints, int maxHitPoints, int power, int dexterity, int sustainability,
-            int accuracy, int rangeAttack,
-            int mana, int maxMana) {
-        super(name, typeUnit, level, experiencePoints, initiative, location, hitPoints, maxHitPoints, power, dexterity,
-                sustainability, accuracy, rangeAttack);
-        this.mana = mana;
-        this.maxMana = maxMana;
-
     }
 }

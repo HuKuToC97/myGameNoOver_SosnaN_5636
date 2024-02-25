@@ -5,24 +5,8 @@ import Unit.Human.RangedCharacter.RangedCharacter;
 
 public abstract class Confessor extends RangedCharacter {
     private int faith;
-    
-    public int getFaith() {
-        return faith;
-    }
-
-    public void setFaith(int faith) {
-        this.faith = faith;
-    }
 
     private int maxFaith;
-
-    public int getMaxFaith() {
-        return maxFaith;
-    }
-
-    public void setMaxFaith(int maxFaith) {
-        this.maxFaith = maxFaith;
-    }
 
     public Confessor(String name, String typeUnit,
             int level, int experiencePoints,
@@ -40,6 +24,26 @@ public abstract class Confessor extends RangedCharacter {
                 power, dexterity, sustainability,
                 accuracy, rangeAttack);
         this.faith = faith;
+        this.maxFaith = maxFaith;
+    }
+
+    //
+    // Getters and setters
+    //
+
+    public int getFaith() {
+        return faith;
+    }
+
+    public void setFaith(int faith) {
+        this.faith = faith;
+    }
+
+    public int getMaxFaith() {
+        return maxFaith;
+    }
+
+    public void setMaxFaith(int maxFaith) {
         this.maxFaith = maxFaith;
     }
 }

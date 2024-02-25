@@ -24,4 +24,5 @@ public abstract class ContactCharacter extends Human{
         super(name, typeUnit, level, experiencePoints, initiative, location, hitPoints, maxHitPoints, power, dexterity,
         sustainability);
     }
+
 }

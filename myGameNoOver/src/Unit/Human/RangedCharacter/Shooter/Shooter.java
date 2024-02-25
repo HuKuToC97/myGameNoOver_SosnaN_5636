@@ -13,6 +13,30 @@ public abstract class Shooter extends RangedCharacter {
     private int maxAmmunition;
     private int amountShotsInStep;
 
+    public Shooter(String name, String typeUnit,
+            int level, int experiencePoints,
+            int initiative,
+            Location2D location,
+            int hitPoints, int maxHitPoints,
+            int power, int dexterity, int sustainability,
+            int accuracy, int rangeAttack,
+            int concentration, int maxConcentration,
+            int ammunition, int maxAmmunition,
+            int amountShotsInStep) {
+        super(name, typeUnit,
+                level, experiencePoints,
+                initiative,
+                location,
+                hitPoints, maxHitPoints,
+                power, dexterity, sustainability,
+                accuracy, rangeAttack);
+        this.concentration = concentration;
+        this.maxConcentration = maxConcentration;
+        this.ammunition = ammunition;
+        this.maxAmmunition = maxAmmunition;
+        this.amountShotsInStep = amountShotsInStep;
+    }
+
     @Override
     protected void getDamage(Unit unit) {
         ammunition--;
@@ -55,6 +79,10 @@ public abstract class Shooter extends RangedCharacter {
         return false;
     }
 
+    //
+    // Getters and setters
+    //
+
     public int getConcentration() {
         return concentration;
     }
@@ -95,27 +123,4 @@ public abstract class Shooter extends RangedCharacter {
         this.amountShotsInStep = amountShotsInStep;
     }
 
-    public Shooter(String name, String typeUnit,
-            int level, int experiencePoints,
-            int initiative,
-            Location2D location,
-            int hitPoints, int maxHitPoints,
-            int power, int dexterity, int sustainability,
-            int accuracy, int rangeAttack,
-            int concentration, int maxConcentration,
-            int ammunition, int maxAmmunition,
-            int amountShotsInStep) {
-        super(name, typeUnit,
-                level, experiencePoints,
-                initiative,
-                location,
-                hitPoints, maxHitPoints,
-                power, dexterity, sustainability,
-                accuracy, rangeAttack);
-        this.concentration = concentration;
-        this.maxConcentration = maxConcentration;
-        this.ammunition = ammunition;
-        this.maxAmmunition = maxAmmunition;
-        this.amountShotsInStep = amountShotsInStep;
-    }
 }

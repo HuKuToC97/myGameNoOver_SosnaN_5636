@@ -125,10 +125,6 @@ public abstract class Unit implements UnitInterface {
         return power * (1 + dexterity / 100);
     }
 
-    private int calculateTakeDamage(int amountDamage) {
-        return (amountDamage * (1 - (sustainability / 100)));
-    }
-
     public void takeDamage(int amountGetDamage) {
         int tempCalculateTakeDamage = calculateTakeDamage(amountGetDamage);
         System.out.println(String.format("%s получает %d урона", this, tempCalculateTakeDamage));
@@ -142,6 +138,10 @@ public abstract class Unit implements UnitInterface {
 
         if (hitPoints < 0)
             dead();
+    }
+
+    private int calculateTakeDamage(int amountDamage) {
+        return (amountDamage * (1 - (sustainability / 100)));
     }
 
     public void dead() {
