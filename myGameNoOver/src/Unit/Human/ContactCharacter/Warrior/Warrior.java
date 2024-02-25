@@ -27,14 +27,15 @@ public abstract class Warrior extends ContactCharacter {
             Unit nearestEnemy = findNearestEnemy(enemyUnits);
             if (nearestEnemy == null) {
                 System.out.println("Все противники мертвы");
-            }
-            Location2D enemyLocation = nearestEnemy.getLocation();
-            Location2DDifference diffLoc = getLocation().getDiffLocation2D(enemyLocation);
-            if (diffLoc.getAbsdX() < 2 && diffLoc.getAbsdY() < 2) {
-                attack(enemyUnits, alliedUnits);
             } else {
-                moveTowards(enemyUnits, alliedUnits, diffLoc);
-                printLocation();
+                Location2D enemyLocation = nearestEnemy.getLocation();
+                Location2DDifference diffLoc = getLocation().getDiffLocation2D(enemyLocation);
+                if (diffLoc.getAbsdX() < 2 && diffLoc.getAbsdY() < 2) {
+                    attack(nearestEnemy);
+                } else {
+                    moveTowards(enemyUnits, alliedUnits, diffLoc);
+                    printLocation();
+                }
             }
 
         }
@@ -82,8 +83,8 @@ public abstract class Warrior extends ContactCharacter {
         }
     }
 
-    protected void attack(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
-        System.out.println("Тут должна быть атака");
+    protected void attack(Unit nearestEnemy) {
+        getDamage(nearestEnemy);
     }
     //
     // Getters and setters
