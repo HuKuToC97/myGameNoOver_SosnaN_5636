@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Unit.Unit;
 import UnitManager.UnitManager;
@@ -23,8 +24,7 @@ public class App {
 
         System.out.println(team1);
         System.out.println(team2);
-
-
+        System.out.println("-".repeat(16));
 
         printTeam(allUnits);
 
@@ -32,8 +32,29 @@ public class App {
 
         printTeam(allUnits);
 
-        stepApp(allUnits, team1, team2);
+        boolean checkEnd = true;
 
+        while (checkEnd) {
+            stepApp(allUnits, team1, team2);
+            checkEnd = checkEnd();
+        }
+
+    }
+
+    public static boolean checkEnd() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Нажмите Enter для следующего хода или введите stop для завершения битвы:");
+
+        while (true) {
+            if (scanner.hasNextLine()) {
+                String input = scanner.nextLine();
+                if (input.equalsIgnoreCase("stop")) {
+                    return false; // Завершаем битву
+                } else if (input.equalsIgnoreCase("")) {
+                    return true; // Продолжаем битву
+                }
+            }
+        }
     }
 
     public static void printTeam(ArrayList<Unit> team) {
@@ -45,16 +66,16 @@ public class App {
 
     public static void stepApp(ArrayList<Unit> allUnits, ArrayList<Unit> team1, ArrayList<Unit> team2) {
         try {
-            int delayInMillis = 500;
+            int delayInMillis = 0;
             int countSteps = 1;
             for (Unit unit : allUnits) {
-                System.out.println(String.format("Шаг %d:", countSteps));
+                System.out.println(String.format("Подшаг %d:", countSteps));
                 if (team1.contains(unit)) {
                     unit.step(team2);
                 } else {
                     unit.step(team1);
                 }
-                System.out.println("-".repeat(16));
+                // System.out.println("-".repeat(16));
                 countSteps++;
                 Thread.sleep(delayInMillis);
             }
