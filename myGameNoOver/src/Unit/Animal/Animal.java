@@ -1,7 +1,5 @@
 package Unit.Animal;
 
-import java.util.ArrayList;
-
 import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 

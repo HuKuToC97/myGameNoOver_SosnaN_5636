@@ -42,18 +42,22 @@ public class App {
     }
 
     public static boolean checkEnd() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Нажмите Enter для следующего хода или введите stop для завершения битвы:");
 
-        while (true) {
-            if (scanner.hasNextLine()) {
-                String input = scanner.nextLine();
-                if (input.equalsIgnoreCase("stop")) {
-                    return false; // Завершаем битву
-                } else if (input.equalsIgnoreCase("")) {
-                    return true; // Продолжаем битву
+        try (Scanner scanner = new Scanner(System.in)) {
+            while (true) {
+                if (scanner.hasNextLine()) {
+                    String input = scanner.nextLine();
+                    if (input.equalsIgnoreCase("stop")) {
+                        return false; // Завершаем битву
+                    } else if (input.equalsIgnoreCase("")) {
+                        return true; // Продолжаем битву
+                    }
                 }
             }
+        } catch (Exception e) {
+            System.err.println("Ошибка ввода: " + e.getMessage());
+            return false; // Прерываем битву из-за ошибки ввода
         }
     }
 
