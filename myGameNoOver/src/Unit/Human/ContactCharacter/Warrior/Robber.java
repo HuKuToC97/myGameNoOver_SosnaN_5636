@@ -57,9 +57,4 @@ public class Robber extends Warrior {
     public void backstab() {
 
     }
-
-    @Override
-    public void step(ArrayList<Unit> list) {
-        System.out.println(String.format("%s мог бы атаковать", this));
-    };
 }

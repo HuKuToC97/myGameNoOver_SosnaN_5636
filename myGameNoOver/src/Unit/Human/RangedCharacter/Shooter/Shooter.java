@@ -79,6 +79,10 @@ public abstract class Shooter extends RangedCharacter {
         return false;
     }
 
+    public void step(ArrayList<Unit> list) {
+        attack(list);
+    }
+
     //
     // Getters and setters
     //

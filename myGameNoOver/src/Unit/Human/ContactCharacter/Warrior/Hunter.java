@@ -58,9 +58,4 @@ public class Hunter extends Warrior {
 
     }
 
-    @Override
-    public void step(ArrayList<Unit> list) {
-        // TODO Auto-generated method stub
-        System.out.println(String.format("%s мог бы атаковать", this));
-    }
 }

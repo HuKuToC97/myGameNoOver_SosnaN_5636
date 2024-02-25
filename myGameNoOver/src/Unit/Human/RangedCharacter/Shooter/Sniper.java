@@ -1,8 +1,5 @@
 package Unit.Human.RangedCharacter.Shooter;
 
-import java.util.ArrayList;
-
-import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 
 public class Sniper extends Shooter {
@@ -72,8 +69,5 @@ public class Sniper extends Shooter {
 
     }
 
-    @Override
-    public void step(ArrayList<Unit> list) {
-        attack(list);
-    }
+
 }

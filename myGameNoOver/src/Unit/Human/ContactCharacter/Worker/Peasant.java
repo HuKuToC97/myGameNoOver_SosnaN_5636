@@ -62,9 +62,4 @@ public class Peasant extends Worker {
         }
     }
 
-    @Override
-    public void step(ArrayList<Unit> list) {
-        System.out.println(String.format("%s мог бы атаковать", this));
-    }
-
 }

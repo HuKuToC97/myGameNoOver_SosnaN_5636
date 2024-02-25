@@ -49,10 +49,4 @@ public class Animal extends Unit {
                 power, dexterity, sustainability);
     }
 
-    @Override
-    public void step(ArrayList<Unit> list) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
-    }
-
 }

@@ -20,10 +20,10 @@ public abstract class Warrior extends ContactCharacter {
         this.maxEndurance = maxEndurance;
     }
 
-    public void step(ArrayList<Unit> list){
-        
+    @Override
+    public void step(ArrayList<Unit> list) {
+        System.out.println(String.format("%s мог бы атаковать", this));
     }
-
 
     //
     // Getters and setters

@@ -1,5 +1,8 @@
 package Unit.Human.RangedCharacter;
 
+import java.util.ArrayList;
+
+import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 import Unit.Human.Human;
 
@@ -32,6 +35,7 @@ public abstract class RangedCharacter extends Human {
         this.accuracy = accuracy;
         this.rangeAttack = rangeAttack;
     }
+
 
     //
     // Getters and setters
