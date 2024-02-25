@@ -167,10 +167,12 @@ public abstract class Unit implements UnitInterface {
         return nearestEnemy;
     }
 
-
     public void step(ArrayList<Unit> list) {
-        System.out.println(String.format("%s мог бы атаковать", this));
+        if (!getIsDead()) {
+            System.out.println(String.format("%s мог бы атаковать", this));
+        }
     }
+
     //
     // Getters and setters
     //

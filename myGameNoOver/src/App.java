@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,33 +43,17 @@ public class App {
     }
 
     public static boolean checkEnd() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Нажмите Enter для следующего хода или введите stop для завершения битвы:");
-    
-        while (true) {
-            if (System.console() == null) {
-                // Если консоль не поддерживает ввод, используем Scanner
-                if (scanner.hasNextLine()) {
-                    String input = scanner.nextLine();
-                    if (input.equalsIgnoreCase("stop")) {
-                        return false; // Завершаем битву
-                    } else if (input.trim().isEmpty()) {
-                        return true; // Продолжаем битву
-                    }
-                }
-            } else {
-                // Иначе используем консольный ввод
-                String input = System.console().readLine();
-                if (input != null) {
-                    input = input.trim(); // Убираем лишние пробелы
-                    if (input.equalsIgnoreCase("stop")) {
-                        return false; // Завершаем битву
-                    } else if (input.isEmpty()) {
-                        return true; // Продолжаем битву
-                    }
-                }
-            }
+        Console console = System.console();
+        if (console == null) {
+            System.err.println("Консольный ввод не поддерживается.");
+            return false;
         }
+        
+        System.out.println("Нажмите Enter для следующего хода или введите stop для завершения битвы:");
+        String input = console.readLine();
+        input = input.trim(); // Убираем лишние пробелы
+
+        return input.isEmpty() || !input.equalsIgnoreCase("stop");
     }
 
     public static void printTeam(ArrayList<Unit> team) {

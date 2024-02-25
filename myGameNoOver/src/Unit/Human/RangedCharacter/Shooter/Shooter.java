@@ -78,7 +78,9 @@ public abstract class Shooter extends RangedCharacter {
     }
 
     public void step(ArrayList<Unit> list) {
-        attack(list);
+        if (!getIsDead()) {
+            attack(list);
+        }
     }
 
     //
