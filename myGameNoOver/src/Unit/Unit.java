@@ -108,12 +108,15 @@ public abstract class Unit implements UnitInterface {
         return typeUnit + " " + name;
     }
 
-    public void showInfoLabel() {
+    public void printLvlAndHp() {
         System.out.println(String.format("'%s %s' lvl %d, %d HP", typeUnit, name, level, hitPoints));
     }
 
-    public void infoForSeminarSecond() {
+    public void printHpAndIsDead() {
         System.out.println(String.format("'%s %s' %d HP, isDead: %b", typeUnit, name, hitPoints, isDead));
+    }
+    public void printLocation() {
+        System.out.println(String.format("'%s %s' %s", typeUnit, name, getLocation()));
     }
 
     protected void getDamage(Unit unit) {

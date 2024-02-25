@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Unit.Unit;
 import Unit.Auxiliary.Location2D;
+import Unit.Auxiliary.Location2DDifference;
 import Unit.Human.ContactCharacter.ContactCharacter;
 
 public abstract class Warrior extends ContactCharacter {
@@ -23,10 +24,67 @@ public abstract class Warrior extends ContactCharacter {
     @Override
     public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
         if (!getIsDead()) {
-            System.out.println(String.format("%s мог бы атаковать", this));
+            Unit nearestEnemy = findNearestEnemy(enemyUnits);
+            if (nearestEnemy == null) {
+                System.out.println("Все противники мертвы");
+            }
+            Location2D enemyLocation = nearestEnemy.getLocation();
+            Location2DDifference diffLoc = getLocation().getDiffLocation2D(enemyLocation);
+            if (diffLoc.getAbsdX() < 2 && diffLoc.getAbsdY() < 2) {
+                attack(enemyUnits, alliedUnits);
+            } else {
+                moveTowards(enemyUnits, alliedUnits, diffLoc);
+                printLocation();
+            }
+
         }
     }
 
+    protected void moveTowards(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits, Location2DDifference diffLoc) {
+        if (diffLoc.getAbsdX() > diffLoc.getAbsdY()) {
+            Location2D newLocation = new Location2D(getLocation().getX() - diffLoc.getSignumdX(), getLocation().getY());
+            if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
+                // moving along x
+                setLocation(newLocation);
+                System.out.println("moving along x");
+            } else {
+                // chek moving along y
+                newLocation = new Location2D(getLocation().getX(), getLocation().getY() - diffLoc.getSignumdY());
+                if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
+                    // moving along y
+                    setLocation(newLocation);
+                    System.out.println("moving along y");
+                } else {
+                    // stand?
+                    System.out.println("stand?");
+                }
+            }
+
+        } else {
+            Location2D newLocation = new Location2D(getLocation().getX(), getLocation().getY() - diffLoc.getSignumdY());
+            if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
+                // moving along y
+                setLocation(newLocation);
+                System.out.println("moving along y");
+            } else {
+                // chek moving along x
+                newLocation = new Location2D(getLocation().getX() - diffLoc.getSignumdX(), getLocation().getY());
+                if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
+                    // moving along x
+                    setLocation(newLocation);
+                    System.out.println("moving along x");
+                } else {
+                    // stand?
+                    System.out.println("stand?");
+                }
+            }
+
+        }
+    }
+
+    protected void attack(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
+        System.out.println("Тут должна быть атака");
+    }
     //
     // Getters and setters
     //

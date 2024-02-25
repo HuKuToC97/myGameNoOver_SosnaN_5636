@@ -57,7 +57,7 @@ public class App {
 
     public static void printTeam(ArrayList<Unit> team) {
         for (Unit unit : team) {
-            unit.infoForSeminarSecond();
+            unit.printHpAndIsDead();
         }
         System.out.println("-".repeat(16));
     }
