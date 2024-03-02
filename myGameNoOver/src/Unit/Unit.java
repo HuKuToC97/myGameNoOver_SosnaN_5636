@@ -115,6 +115,7 @@ public abstract class Unit implements UnitInterface {
     public void printHpAndIsDead() {
         System.out.println(String.format("'%s %s' %d HP, isDead: %b", typeUnit, name, hitPoints, isDead));
     }
+
     public void printLocation() {
         System.out.println(String.format("'%s %s' %s", typeUnit, name, getLocation()));
     }
