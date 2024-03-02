@@ -1,5 +1,5 @@
 // Файл GameField.java
-package View;
+package View.Panel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ public class GameField extends JPanel {
         // Создаем секторы игрового поля
         for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
             JPanel sector = new JPanel();
-            sector.setBackground(Color.WHITE); // Устанавливаем цвет фона сектора
+            sector.setBackground(Color.BLACK); // Устанавливаем цвет фона сектора
             sector.setBorder(BorderFactory.createLineBorder(GRID_COLOR)); // Устанавливаем рамку сектора
             add(sector); // Добавляем сектор на игровое поле
         }

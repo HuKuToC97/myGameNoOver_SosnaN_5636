@@ -88,6 +88,8 @@ package View;
 
 import javax.swing.*;
 
+import View.Panel.MainPanel;
+
 import java.awt.*;
 
 public class GameView {

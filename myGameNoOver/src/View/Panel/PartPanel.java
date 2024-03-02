@@ -1,7 +1,9 @@
 // Файл SidePanel.java
-package View;
+package View.Panel;
 
 import javax.swing.*;
+
+import View.GameView;
 
 import java.awt.*;
 
