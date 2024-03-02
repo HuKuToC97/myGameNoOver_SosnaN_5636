@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import Unit.Unit;
 import UnitManager.UnitManager;
+import View.View;
 
 public class App {
     /**
@@ -13,7 +14,9 @@ public class App {
         ArrayList<Unit> team1 = UnitManager.createUnitList(10, 0);
         ArrayList<Unit> team2 = UnitManager.createUnitList(10, 9);
 
-        startBattle(team1, team2);
+        // startBattle(team1, team2);
+
+        View.view();
     }
 
     public static void startBattle(ArrayList<Unit> team1, ArrayList<Unit> team2) {
