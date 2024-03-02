@@ -1,4 +1,4 @@
-package UnitManager;
+package Meneger.UnitManager;
 
 public enum Names {
     Ivan, Maria, Dmitry, Anna, Sergey, Olga, Alexander, Ekaterina, Mikhail, Tatiana, Andrey, Elena, Pavel, Natalia,

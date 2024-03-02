@@ -1,4 +1,4 @@
-package UnitManager;
+package Meneger.UnitManager;
 
 import java.util.ArrayList;
 import java.util.Random;
