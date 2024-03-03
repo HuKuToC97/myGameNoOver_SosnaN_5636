@@ -1,4 +1,3 @@
-// Файл FrameUtil.java
 package View;
 
 import javax.swing.*;
@@ -12,7 +11,6 @@ public class FrameUtil {
         int centerY = (int) ((screenSize.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(centerX, centerY);
 
-        // Обращение к приватному полю mainPanel через геттер
         JPanel mainPanel = gameView.getMainPanel();
         if (mainPanel != null) {
             mainPanel.revalidate();

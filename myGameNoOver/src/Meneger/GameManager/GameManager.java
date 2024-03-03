@@ -1,16 +1,20 @@
-// Файл GameManager.java
 package Meneger.GameManager;
 
 import java.io.Console;
 import java.util.ArrayList;
 
+import javax.swing.JPanel;
+
 import Meneger.UnitManager.UnitManager;
 import Unit.Unit;
-
+import Unit.Auxiliary.Location2D;
 import View.GameView;
+import View.Panel.GameField;
+import View.Panel.MainPanel;
 
 public class GameManager {
     private GameView gameView;
+    private GameField gameField;
 
     public GameManager(GameView gameView) {
         this.gameView = gameView;
@@ -79,6 +83,7 @@ public class GameManager {
                 } else {
                     unit.step(team1, team2);
                 }
+                updateGameView(allUnits);
                 countSteps++;
                 Thread.sleep(delayInMillis);
             }
@@ -92,4 +97,41 @@ public class GameManager {
         System.out.println("/".repeat(16));
         System.out.println("Новая генерация\n");
     }
+
+
+    // public void updateGameView(ArrayList<Unit> units) {
+    //     MainPanel mainPanel = this.gameView.getMainPanel();
+    //     if (mainPanel instanceof MainPanel) {
+    //         MainPanel mainPanelObject = (MainPanel) mainPanel;
+    //         GameField gameField = (GameField) mainPanelObject.getCenterPanel();
+    //         gameField.clear(); // Очищаем игровое поле перед обновлением
+    //         for (Unit unit : units) {
+    //             Location2D location = unit.getLocation();
+    //             int x = location.getX();
+    //             int y = location.getY();
+    //             gameField.drawUnit(unit, x, y); // Отрисовываем персонажа в указанной клетке
+    //         }
+    //         gameField.repaint(); // Перерисовываем игровое поле
+    //     } else {
+    //         System.err.println("Ошибка: mainPanel не является экземпляром MainPanel");
+    //     }
+    // }
+
+    public void updateGameView(ArrayList<Unit> units) {
+        MainPanel mainPanel = this.gameView.getMainPanel();
+        if (mainPanel != null) { // Проверка на null
+            GameField gameField = mainPanel.getCenterPanel();
+            gameField.clear();
+            for (Unit unit : units) {
+                Location2D location = unit.getLocation();
+                int x = location.getX();
+                int y = location.getY();
+                gameField.drawUnit(unit, x, y);
+            }
+            gameField.repaint();
+        } else {
+            System.err.println("Ошибка: mainPanel не инициализирован");
+        }
+    }
+    
 }

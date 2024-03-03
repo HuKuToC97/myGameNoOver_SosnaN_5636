@@ -1,4 +1,3 @@
-// Файл SidePanel.java
 package View.Panel;
 
 import javax.swing.*;
