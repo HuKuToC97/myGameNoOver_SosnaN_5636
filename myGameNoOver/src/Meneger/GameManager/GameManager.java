@@ -7,8 +7,8 @@ import Meneger.UnitManager.UnitManager;
 import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 import View.GameView;
-import View.Panel.GameField;
 import View.Panel.MainPanel;
+import View.Panel.GameField.GameField;
 
 public class GameManager {
     private GameView gameView;

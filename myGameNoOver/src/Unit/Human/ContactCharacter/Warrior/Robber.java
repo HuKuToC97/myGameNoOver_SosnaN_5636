@@ -37,7 +37,7 @@ public class Robber extends Warrior {
     }
 
     public Robber(String name, int x, int y) {
-        this(name, "Robber (Разбойник)",
+        this(name, "Robber",
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 2,
                 new Location2D(x, y),

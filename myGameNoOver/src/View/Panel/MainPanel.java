@@ -3,6 +3,7 @@ package View.Panel;
 import javax.swing.*;
 
 import View.GameView;
+import View.Panel.GameField.GameField;
 
 import java.awt.*;
 

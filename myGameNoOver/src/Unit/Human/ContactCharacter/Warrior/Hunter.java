@@ -37,7 +37,7 @@ public class Hunter extends Warrior {
     }
 
     public Hunter(String name, int x, int y) {
-        this(name, "Hunter (Охотник)",
+        this(name, "Hunter",
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 2,
                 new Location2D(x, y),
