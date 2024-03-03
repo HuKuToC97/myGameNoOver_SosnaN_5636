@@ -18,9 +18,15 @@ public class DrawUnit {
 
     static {
         // Здесь добавляем соответствие между типом юнита и путем к иконке
-        unitIcons.put("Warrior", "warrior.png");
+        unitIcons.put("Hunter", "hunter.png");
+        unitIcons.put("Robber", "robber.png");
+        unitIcons.put("Peasant", "peasant.png");
+        unitIcons.put("Squire", "squire.png");
+        unitIcons.put("Monk", "monk.png");
+        unitIcons.put("Witch", "witch.png");
         unitIcons.put("Archer", "archer.png");
-        unitIcons.put("Mage", "mage.png");
+        unitIcons.put("Crossbowman", "crossbowman.png");
+        unitIcons.put("Sniper", "sniper.png");
         // Добавьте другие типы юнитов и их иконки по мере необходимости
     }
 

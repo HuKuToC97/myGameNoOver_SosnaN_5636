@@ -109,6 +109,7 @@ public class GameManager {
     public void updateGameView(ArrayList<Unit> units) {
         MainPanel mainPanel = this.gameView.getMainPanel();
         if (mainPanel != null) { // Проверка на null
+            mainPanel.updateTextAreas();
             GameField gameField = mainPanel.getCenterPanel();
             gameField.clear();
             for (Unit unit : units) {

@@ -108,6 +108,10 @@ public abstract class Unit implements UnitInterface {
         return typeUnit + " " + name;
     }
 
+    public String toStringForPartPanel() {
+        return typeUnit + " " + name + " " + hitPoints + "HP ";
+    }
+
     public void printLvlAndHp() {
         System.out.println(String.format("'%s %s' lvl %d, %d HP", typeUnit, name, level, hitPoints));
     }

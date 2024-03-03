@@ -48,7 +48,7 @@ public class Archer extends Shooter {
     }
 
     public Archer(String name, int x, int y) {
-        this(name, "Archer (Лучник)",
+        this(name, "Archer",
                 1, 0,
                 3,
                 new Location2D(x, y),
