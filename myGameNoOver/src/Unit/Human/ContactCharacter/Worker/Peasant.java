@@ -37,7 +37,7 @@ public class Peasant extends Worker {
     }
 
     public Peasant(String name, int x, int y) {
-        this(name, "Крестьянин",
+        this(name, "Peasant",
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 0,
                 new Location2D(x, y),

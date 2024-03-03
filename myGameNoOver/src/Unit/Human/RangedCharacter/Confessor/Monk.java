@@ -40,7 +40,7 @@ public class Monk extends Confessor {
     }
 
     public Monk(String name, int x, int y) {
-        this(name, "Monk (Монах)",
+        this(name, "Monk",
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 1,
                 new Location2D(x, y),

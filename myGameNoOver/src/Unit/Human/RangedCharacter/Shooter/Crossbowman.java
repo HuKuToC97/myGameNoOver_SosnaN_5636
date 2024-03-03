@@ -48,7 +48,7 @@ public class Crossbowman extends Shooter {
     }
 
     public Crossbowman(String name, int x, int y) {
-        this(name, "Crossbowman (Арбалетчик)",
+        this(name, "Crossbowman",
                 1, 0,
                 3,
                 new Location2D(x, y),

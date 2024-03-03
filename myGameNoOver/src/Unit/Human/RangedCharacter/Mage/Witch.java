@@ -40,7 +40,7 @@ public class Witch extends Mage {
     }
 
     public Witch(String name, int x, int y) {
-        this(name, "Witch (Колдун)",
+        this(name, "Witch",
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 1,
                 new Location2D(x, y),

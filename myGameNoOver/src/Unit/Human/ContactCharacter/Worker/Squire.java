@@ -42,7 +42,7 @@ public class Squire extends Worker {
     }
 
     public Squire(String name, int x, int y) {
-        this(name, "Оруженосец",
+        this(name, "Squire",
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 0,
                 new Location2D(x, y),

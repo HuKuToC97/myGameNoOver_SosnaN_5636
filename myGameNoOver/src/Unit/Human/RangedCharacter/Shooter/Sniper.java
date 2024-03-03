@@ -48,7 +48,7 @@ public class Sniper extends Shooter {
     }
 
     public Sniper(String name, int x, int y) {
-        this(name, "Sniper (Снайпер)",
+        this(name, "Sniper",
                 1, 0,
                 3,
                 new Location2D(x, y),
