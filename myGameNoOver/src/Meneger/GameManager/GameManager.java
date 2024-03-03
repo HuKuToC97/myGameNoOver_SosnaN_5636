@@ -3,8 +3,6 @@ package Meneger.GameManager;
 import java.io.Console;
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
-
 import Meneger.UnitManager.UnitManager;
 import Unit.Unit;
 import Unit.Auxiliary.Location2D;
@@ -14,7 +12,17 @@ import View.Panel.MainPanel;
 
 public class GameManager {
     private GameView gameView;
-    private GameField gameField;
+
+    private static ArrayList<Unit> team1;
+    private static ArrayList<Unit> team2;
+
+    public static ArrayList<Unit> getTeam1() {
+        return team1;
+    }
+
+    public static ArrayList<Unit> getTeam2() {
+        return team2;
+    }
 
     public GameManager(GameView gameView) {
         this.gameView = gameView;
@@ -22,8 +30,8 @@ public class GameManager {
 
     public void startGame() {
         printHelloUser();
-        ArrayList<Unit> team1 = UnitManager.createUnitList(10, 0);
-        ArrayList<Unit> team2 = UnitManager.createUnitList(10, 9);
+        team1 = UnitManager.createUnitList(10, 0);
+        team2 = UnitManager.createUnitList(10, 9);
 
         startBattle(team1, team2);
     }
@@ -42,12 +50,12 @@ public class GameManager {
         allUnits.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
 
         printTeam(allUnits);
-
+        updateGameView(allUnits);
         boolean checkEnd = true;
 
         while (checkEnd) {
-            stepApp(allUnits, team1, team2);
             checkEnd = checkEnd();
+            stepApp(allUnits, team1, team2);
         }
     }
 
@@ -98,25 +106,6 @@ public class GameManager {
         System.out.println("Новая генерация\n");
     }
 
-
-    // public void updateGameView(ArrayList<Unit> units) {
-    //     MainPanel mainPanel = this.gameView.getMainPanel();
-    //     if (mainPanel instanceof MainPanel) {
-    //         MainPanel mainPanelObject = (MainPanel) mainPanel;
-    //         GameField gameField = (GameField) mainPanelObject.getCenterPanel();
-    //         gameField.clear(); // Очищаем игровое поле перед обновлением
-    //         for (Unit unit : units) {
-    //             Location2D location = unit.getLocation();
-    //             int x = location.getX();
-    //             int y = location.getY();
-    //             gameField.drawUnit(unit, x, y); // Отрисовываем персонажа в указанной клетке
-    //         }
-    //         gameField.repaint(); // Перерисовываем игровое поле
-    //     } else {
-    //         System.err.println("Ошибка: mainPanel не является экземпляром MainPanel");
-    //     }
-    // }
-
     public void updateGameView(ArrayList<Unit> units) {
         MainPanel mainPanel = this.gameView.getMainPanel();
         if (mainPanel != null) { // Проверка на null
@@ -133,5 +122,5 @@ public class GameManager {
             System.err.println("Ошибка: mainPanel не инициализирован");
         }
     }
-    
+
 }
