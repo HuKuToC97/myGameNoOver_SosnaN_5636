@@ -1,11 +1,12 @@
 package View.Panel.GameField;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 import Meneger.GameManager.GameManager;
 import Unit.Unit;
-
-import java.awt.*;
 
 public class GameField extends JPanel {
     private static final int GRID_SIZE = 10;
@@ -15,6 +16,7 @@ public class GameField extends JPanel {
     private static final Color DEAD_UNIT_COLOR = Color.RED;
 
     private JPanel[][] sectors;
+    private Popup unitInfoPopup;
 
     public GameField() {
         setLayout(new GridLayout(GRID_SIZE, GRID_SIZE));
@@ -35,12 +37,44 @@ public class GameField extends JPanel {
         }
     }
 
+    private void showUnitInfoPopup(int x, int y, JPanel sector) {
+        Unit unit = getUnitFromSector(sector); // Получаем персонажа из сектора
+        if (unit != null) { // Если персонаж найден
+            if (unitInfoPopup != null) { // если уже существует всплывающее окно, скрываем его
+                unitInfoPopup.hide();
+            }
+            UnitInfoPopup popup = new UnitInfoPopup(unit); // Создаем всплывающее окно с информацией о персонаже
+            PopupFactory factory = PopupFactory.getSharedInstance();
+            unitInfoPopup = factory.getPopup(sector, popup, x, y); // Создаем экземпляр всплывающего окна
+            unitInfoPopup.show(); // Отображаем всплывающее окно
+        }
+    }
+
+    private Unit getUnitFromSector(JPanel sector) {
+        // Предполагаем, что каждая панель sector содержит в себе объект Unit
+        Object obj = sector.getClientProperty("unit");
+        if (obj instanceof Unit) {
+            return (Unit) obj;
+        } else {
+            return null;
+        }
+    }
+
     public void drawUnit(Unit unit, int x, int y) {
         if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
             JPanel sector = sectors[x][y];
             sector.removeAll(); // Очищаем сектор от предыдущих элементов
-            DrawUnit.drawUnit(unit, sector); // Используем DrawUnit для отрисовки юнита
-            setSectorColor(unit, sector); // Устанавливаем цвет сектора в зависимости от состояния юнита
+            DrawUnit.drawUnit(unit, sector);
+            setSectorColor(unit, sector);
+
+            sector.putClientProperty("unit", unit);
+            sector.addMouseMotionListener(new MouseMotionAdapter() {
+                @Override
+                public void mouseMoved(MouseEvent e) {
+                    showUnitInfoPopup(e.getX(), e.getY(), sector);
+                }
+            });
+
             sector.revalidate(); // Перерисовываем сектор
             sector.repaint();
         }
@@ -54,7 +88,8 @@ public class GameField extends JPanel {
         } else if (GameManager.getTeam2().contains(unit)) {
             sector.setBackground(TEAM2_COLOR);
         } else {
-            sector.setBackground(Color.BLACK); // Если юнит не принадлежит ни одной команде, устанавливаем цвет по умолчанию
+            sector.setBackground(Color.BLACK); // Если юнит не принадлежит ни одной команде, устанавливаем цвет по
+                                               // умолчанию
         }
     }
 
