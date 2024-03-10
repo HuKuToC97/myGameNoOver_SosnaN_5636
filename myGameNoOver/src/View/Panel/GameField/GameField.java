@@ -45,7 +45,13 @@ public class GameField extends JPanel {
             }
             UnitInfoPopup popup = new UnitInfoPopup(unit); // Создаем всплывающее окно с информацией о персонаже
             PopupFactory factory = PopupFactory.getSharedInstance();
-            unitInfoPopup = factory.getPopup(sector, popup, x, y); // Создаем экземпляр всплывающего окна
+            
+            // Получаем абсолютные координаты сектора на экране
+            Point locationOnScreen = sector.getLocationOnScreen();
+            int absoluteX = (int) locationOnScreen.getX() + x;
+            int absoluteY = (int) locationOnScreen.getY() + y;
+    
+            unitInfoPopup = factory.getPopup(sector, popup, absoluteX, absoluteY); // Создаем экземпляр всплывающего окна
             unitInfoPopup.show(); // Отображаем всплывающее окно
         }
     }
