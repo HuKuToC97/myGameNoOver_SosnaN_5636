@@ -13,16 +13,11 @@ import View.Panel.GameField.GameField;
 public class GameManager {
     private GameView gameView;
 
+    private static boolean team1DeadFlag;
+    private static boolean team2DeadFlag;
+
     private static ArrayList<Unit> team1;
     private static ArrayList<Unit> team2;
-
-    public static ArrayList<Unit> getTeam1() {
-        return team1;
-    }
-
-    public static ArrayList<Unit> getTeam2() {
-        return team2;
-    }
 
     public GameManager(GameView gameView) {
         this.gameView = gameView;
@@ -51,15 +46,38 @@ public class GameManager {
 
         printTeam(allUnits);
         updateGameView(allUnits);
-        boolean checkEnd = true;
+        boolean continuationFlag = true;
 
-        while (checkEnd) {
-            checkEnd = checkEnd();
-            stepApp(allUnits, team1, team2);
+        while (continuationFlag) {
+            if (checkAliveUnit(allUnits))
+                if (requestToContinue()) {
+                    stepApp(allUnits, team1, team2);
+                    continue;
+                }
+            updateGameView(allUnits);
+            continuationFlag = false;
         }
     }
 
-    private boolean checkEnd() {
+    private boolean checkAliveUnit(ArrayList<Unit> allUnits) {
+        for (Unit unit : allUnits) {
+            if (team1.contains(unit)) {
+                team1DeadFlag = unit.getIsDead();
+            }
+            if (team2.contains(unit)) {
+                team2DeadFlag = unit.getIsDead();
+            }
+        }
+        if (team1DeadFlag) {
+            System.out.println("Team2 win");
+        }
+        if (team2DeadFlag) {
+            System.out.println("Team1 win");
+        }
+        return !(team1DeadFlag || team2DeadFlag);
+    }
+
+    private boolean requestToContinue() {
         Console console = System.console();
         if (console == null) {
             System.err.println("Консольный ввод не поддерживается.");
@@ -124,4 +142,31 @@ public class GameManager {
         }
     }
 
+    //
+    // Getters and setters
+    //
+
+    public static boolean isTeam1DeadFlag() {
+        return team1DeadFlag;
+    }
+
+    public static void setTeam1DeadFlag(boolean team1DeadFlag) {
+        GameManager.team1DeadFlag = team1DeadFlag;
+    }
+
+    public static boolean isTeam2DeadFlag() {
+        return team2DeadFlag;
+    }
+
+    public static void setTeam2DeadFlag(boolean team2DeadFlag) {
+        GameManager.team2DeadFlag = team2DeadFlag;
+    }
+
+    public static ArrayList<Unit> getTeam1() {
+        return team1;
+    }
+
+    public static ArrayList<Unit> getTeam2() {
+        return team2;
+    }
 }
