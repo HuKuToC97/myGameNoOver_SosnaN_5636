@@ -33,29 +33,30 @@ public class GameManager {
         startBattle(team1, team2);
     }
 
-private void startBattle(ArrayList<Unit> team1, ArrayList<Unit> team2) {
-    ArrayList<Unit> allUnits = new ArrayList<>();
-    allUnits.addAll(team1);
-    allUnits.addAll(team2);
-
-    System.out.println(team1);
-    System.out.println(team2);
-    System.out.println("-".repeat(16));
-
-    printTeam(allUnits);
-
-    allUnits.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
-    updateGameView(allUnits);
-
-    while (continuationFlag && checkAliveUnit(allUnits)) {
-        stepApp(allUnits, team1, team2);
+    private void startBattle(ArrayList<Unit> team1, ArrayList<Unit> team2) {
+        ArrayList<Unit> allUnits = new ArrayList<>();
+        allUnits.addAll(team1);
+        allUnits.addAll(team2);
+    
+        System.out.println(team1);
+        System.out.println(team2);
+        System.out.println("-".repeat(16));
+    
+        printTeam(allUnits);
+    
+        allUnits.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
         updateGameView(allUnits);
+    
+        while (continuationFlag && checkAliveUnit(allUnits)) {
+            gameView.getMainPanel().getTopPanel().waitForStep(); // Ждем нажатия кнопки "Сделать шаг"
+            stepApp(allUnits, team1, team2);
+            updateGameView(allUnits);
+        }
+    
+        if (!continuationFlag) {
+            System.out.println("Игра завершена.");
+        }
     }
-
-    if (!continuationFlag) {
-        System.out.println("Игра завершена.");
-    }
-}
 
     private boolean checkAliveUnit(ArrayList<Unit> allUnits) {
         for (Unit unit : allUnits) {

@@ -23,6 +23,7 @@ public class TopPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GameManager.continuationFlag = true; // Устанавливаем флаг продолжения игры в true
+                notifyStep(); // Оповещаем TopPanel о событии
             }
         });
 
@@ -38,5 +39,22 @@ public class TopPanel extends JPanel {
         // Добавление кнопок на панель
         add(stepButton);
         add(exitButton);
+    }
+
+    // Метод для оповещения о событии "Сделать шаг"
+    public void notifyStep() {
+        synchronized (this) {
+            notify(); // Оповещаем объект TopPanel
+        }
+    }
+
+    public void waitForStep() {
+        synchronized (this) {
+            try {
+                wait(); // Ожидаем уведомления о нажатии кнопки
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

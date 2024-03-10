@@ -37,7 +37,7 @@ public class MainPanel extends JPanel {
         add(rightPanel, BorderLayout.EAST);
     }
 
-    public void updateTextAreas(){
+    public void updateTextAreas() {
         leftPanel.updateTeamInformation(GameManager.getTeam1());
         rightPanel.updateTeamInformation(GameManager.getTeam2());
     };
@@ -52,5 +52,9 @@ public class MainPanel extends JPanel {
 
     public GameField getCenterPanel() {
         return centerPanel;
+    }
+
+    public TopPanel getTopPanel() {
+        return topPanel;
     }
 }
