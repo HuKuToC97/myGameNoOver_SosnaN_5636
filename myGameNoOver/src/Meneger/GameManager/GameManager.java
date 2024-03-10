@@ -13,6 +13,8 @@ import View.Panel.GameField.GameField;
 public class GameManager {
     private GameView gameView;
 
+    public static boolean continuationFlag = true;
+
     private static boolean team1DeadFlag;
     private static boolean team2DeadFlag;
 
@@ -31,33 +33,29 @@ public class GameManager {
         startBattle(team1, team2);
     }
 
-    private void startBattle(ArrayList<Unit> team1, ArrayList<Unit> team2) {
-        ArrayList<Unit> allUnits = new ArrayList<>();
-        allUnits.addAll(team1);
-        allUnits.addAll(team2);
+private void startBattle(ArrayList<Unit> team1, ArrayList<Unit> team2) {
+    ArrayList<Unit> allUnits = new ArrayList<>();
+    allUnits.addAll(team1);
+    allUnits.addAll(team2);
 
-        System.out.println(team1);
-        System.out.println(team2);
-        System.out.println("-".repeat(16));
+    System.out.println(team1);
+    System.out.println(team2);
+    System.out.println("-".repeat(16));
 
-        printTeam(allUnits);
+    printTeam(allUnits);
 
-        allUnits.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
+    allUnits.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
+    updateGameView(allUnits);
 
-        printTeam(allUnits);
+    while (continuationFlag && checkAliveUnit(allUnits)) {
+        stepApp(allUnits, team1, team2);
         updateGameView(allUnits);
-        boolean continuationFlag = true;
-
-        while (continuationFlag) {
-            if (checkAliveUnit(allUnits))
-                if (requestToContinue()) {
-                    stepApp(allUnits, team1, team2);
-                    continue;
-                }
-            updateGameView(allUnits);
-            continuationFlag = false;
-        }
     }
+
+    if (!continuationFlag) {
+        System.out.println("Игра завершена.");
+    }
+}
 
     private boolean checkAliveUnit(ArrayList<Unit> allUnits) {
         for (Unit unit : allUnits) {
