@@ -110,21 +110,42 @@ public class GameManager {
 
     public void updateGameView(ArrayList<Unit> units) {
         MainPanel mainPanel = this.gameView.getMainPanel();
-        if (mainPanel != null) { // Проверка на null
+        if (mainPanel != null) {
             mainPanel.updateTextAreas();
             GameField gameField = mainPanel.getCenterPanel();
             gameField.clear();
+    
+            ArrayList<Unit> deadUnits = new ArrayList<>();
+            ArrayList<Unit> aliveUnits = new ArrayList<>();
+    
+            // Разделяем юнитов на мертвых и живых
             for (Unit unit : units) {
-                Location2D location = unit.getLocation();
-                int x = location.getX();
-                int y = location.getY();
-                gameField.drawUnit(unit, x, y);
+                if (unit.getIsDead()) {
+                    deadUnits.add(unit);
+                } else {
+                    aliveUnits.add(unit);
+                }
             }
+    
+            // Отрисовываем сначала мертвых юнитов, затем живых
+            drawUnits(gameField, deadUnits);
+            drawUnits(gameField, aliveUnits);
+    
             gameField.repaint();
         } else {
             System.err.println("Ошибка: mainPanel не инициализирован");
         }
     }
+    
+    private void drawUnits(GameField gameField, ArrayList<Unit> units) {
+        for (Unit unit : units) {
+            Location2D location = unit.getLocation();
+            int x = location.getX();
+            int y = location.getY();
+            gameField.drawUnit(unit, x, y);
+        }
+    }
+    
 
     //
     // Getters and setters
