@@ -80,6 +80,26 @@ public class GameField extends JPanel {
                     showUnitInfoPopup(e.getX(), e.getY(), sector);
                 }
             });
+            sector.addMouseListener(new java.awt.event.MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {}
+            
+                @Override
+                public void mousePressed(MouseEvent e) {}
+            
+                @Override
+                public void mouseReleased(MouseEvent e) {}
+            
+                @Override
+                public void mouseEntered(MouseEvent e) {}
+            
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    if (unitInfoPopup != null) {
+                        unitInfoPopup.hide(); // Скрываем всплывающее окно, когда мышь покидает сектор
+                    }
+                }
+            });
 
             sector.revalidate(); // Перерисовываем сектор
             sector.repaint();
