@@ -59,12 +59,14 @@ public class GameManager {
     }
 
     private boolean checkAliveUnit(ArrayList<Unit> allUnits) {
+        team1DeadFlag = true;
+        team2DeadFlag = true;
         for (Unit unit : allUnits) {
             if (team1.contains(unit)) {
-                team1DeadFlag = unit.getIsDead();
+                team1DeadFlag = team1DeadFlag && unit.getIsDead();
             }
             if (team2.contains(unit)) {
-                team2DeadFlag = unit.getIsDead();
+                team2DeadFlag = team2DeadFlag && unit.getIsDead();
             }
         }
         if (team1DeadFlag) {
@@ -74,20 +76,6 @@ public class GameManager {
             System.out.println("Team1 win");
         }
         return !(team1DeadFlag || team2DeadFlag);
-    }
-
-    private boolean requestToContinue() {
-        Console console = System.console();
-        if (console == null) {
-            System.err.println("Консольный ввод не поддерживается.");
-            return false;
-        }
-
-        System.out.println("Нажмите Enter для следующего хода или введите stop для завершения битвы:");
-        String input = console.readLine();
-        input = input.trim(); // Убираем лишние пробелы
-
-        return input.isEmpty() || !input.equalsIgnoreCase("stop");
     }
 
     private void printTeam(ArrayList<Unit> team) {
@@ -100,16 +88,13 @@ public class GameManager {
     private void stepApp(ArrayList<Unit> allUnits, ArrayList<Unit> team1, ArrayList<Unit> team2) {
         try {
             int delayInMillis = 0;
-            int countSteps = 1;
             for (Unit unit : allUnits) {
-                System.out.println(String.format("Подшаг %d:", countSteps));
                 if (team1.contains(unit)) {
                     unit.step(team2, team1);
                 } else {
                     unit.step(team1, team2);
                 }
                 updateGameView(allUnits);
-                countSteps++;
                 Thread.sleep(delayInMillis);
             }
 
