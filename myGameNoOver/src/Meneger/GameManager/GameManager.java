@@ -1,6 +1,5 @@
 package Meneger.GameManager;
 
-import java.io.Console;
 import java.util.ArrayList;
 
 import Meneger.UnitManager.UnitManager;
@@ -37,22 +36,22 @@ public class GameManager {
         ArrayList<Unit> allUnits = new ArrayList<>();
         allUnits.addAll(team1);
         allUnits.addAll(team2);
-    
+
         System.out.println(team1);
         System.out.println(team2);
         System.out.println("-".repeat(16));
-    
+
         printTeam(allUnits);
-    
+
         allUnits.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
         updateGameView(allUnits);
-    
+
         while (continuationFlag && checkAliveUnit(allUnits)) {
             gameView.getMainPanel().getTopPanel().waitForStep(); // Ждем нажатия кнопки "Сделать шаг"
             stepApp(allUnits, team1, team2);
             updateGameView(allUnits);
         }
-    
+
         if (!continuationFlag) {
             System.out.println("Игра завершена.");
         }
@@ -114,10 +113,10 @@ public class GameManager {
             mainPanel.updateTextAreas();
             GameField gameField = mainPanel.getCenterPanel();
             gameField.clear();
-    
+
             ArrayList<Unit> deadUnits = new ArrayList<>();
             ArrayList<Unit> aliveUnits = new ArrayList<>();
-    
+
             // Разделяем юнитов на мертвых и живых
             for (Unit unit : units) {
                 if (unit.getIsDead()) {
@@ -126,17 +125,17 @@ public class GameManager {
                     aliveUnits.add(unit);
                 }
             }
-    
+
             // Отрисовываем сначала мертвых юнитов, затем живых
             drawUnits(gameField, deadUnits);
             drawUnits(gameField, aliveUnits);
-    
+
             gameField.repaint();
         } else {
             System.err.println("Ошибка: mainPanel не инициализирован");
         }
     }
-    
+
     private void drawUnits(GameField gameField, ArrayList<Unit> units) {
         for (Unit unit : units) {
             Location2D location = unit.getLocation();
@@ -145,7 +144,6 @@ public class GameManager {
             gameField.drawUnit(unit, x, y);
         }
     }
-    
 
     //
     // Getters and setters
