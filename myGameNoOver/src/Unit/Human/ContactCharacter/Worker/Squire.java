@@ -57,10 +57,6 @@ public class Squire extends Worker {
                 0, 0);
     }
 
-    public void bringAmmunation() {
-        setInitiative(getInitiative() * (1 - (fatigue / 100)));
-        fatigue = fatigue--;
-    }
 
 
     //

@@ -51,7 +51,7 @@ public class Robber extends Warrior {
                 0, 0);
     }
 
+    // Реализовать удар в спину
     public void backstab() {
-
     }
 }

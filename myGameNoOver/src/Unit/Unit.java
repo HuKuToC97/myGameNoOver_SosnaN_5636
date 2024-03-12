@@ -125,8 +125,7 @@ public abstract class Unit implements UnitInterface {
     }
 
     protected void getDamage(Unit unit) {
-        int amountDamage = calculateGetDamage();
-        unit.takeDamage(amountDamage);
+        unit.takeDamage(calculateGetDamage());
     }
 
     private int calculateGetDamage() {

@@ -51,12 +51,5 @@ public class Peasant extends Worker {
                 0, 0);
     }
 
-    public void work() {
-        if (getCalm() < getMaxCalm()) {
-            setCalm(getCalm() + 1);
-        } else {
-            setCalm(getMaxCalm());
-        }
-    }
 
 }

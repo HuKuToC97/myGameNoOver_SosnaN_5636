@@ -51,8 +51,8 @@ public class Hunter extends Warrior {
                 0, 0);
     }
 
+    // Реализовать поймать в сеть противника
     public void catchInNet() {
-
     }
 
 }
