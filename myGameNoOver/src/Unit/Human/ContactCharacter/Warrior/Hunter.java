@@ -41,8 +41,8 @@ public class Hunter extends Warrior {
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 2,
                 new Location2D(x, y),
-                100,
-                10, 10, 10,
+                150,
+                5, 10, 8,
                 1000);
     }
 
@@ -50,6 +50,8 @@ public class Hunter extends Warrior {
         this(name,
                 0, 0);
     }
+
+
 
     // Реализовать поймать в сеть противника
     public void catchInNet() {

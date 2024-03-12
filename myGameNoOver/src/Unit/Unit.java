@@ -3,6 +3,7 @@ package Unit;
 import java.util.ArrayList;
 
 import Unit.Auxiliary.Location2D;
+import Unit.Auxiliary.Location2DDifference;
 
 public abstract class Unit implements UnitInterface {
     private boolean isDead;
@@ -129,7 +130,7 @@ public abstract class Unit implements UnitInterface {
     }
 
     private int calculateGetDamage() {
-        return power * (1 + dexterity / 100);
+        return getPower() * (1 + getDexterity() / 100);
     }
 
     public void takeDamage(int amountGetDamage) {
@@ -151,7 +152,7 @@ public abstract class Unit implements UnitInterface {
         return (amountDamage * (1 - (sustainability / 100)));
     }
 
-    public void dead() {
+    protected void dead() {
         hitPoints = 0;
         isDead = true;
         System.out.println(this + "- пал в неравном бою");
@@ -176,7 +177,7 @@ public abstract class Unit implements UnitInterface {
 
     public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
         if (!getIsDead()) {
-            System.out.println(String.format("%s мог бы атаковать", this));
+            System.out.println(String.format("%s делает шаг", this));
         }
     }
 

@@ -21,73 +21,72 @@ public abstract class Warrior extends ContactCharacter {
         this.maxEndurance = maxEndurance;
     }
 
-    // @Override
-    // public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
-    //     if (!getIsDead()) {
-    //         Unit nearestEnemy = findNearestEnemy(enemyUnits);
-    //         if (nearestEnemy == null) {
-    //             System.out.println("Все противники мертвы");
-    //         } else {
-    //             Location2D enemyLocation = nearestEnemy.getLocation();
-    //             Location2DDifference diffLoc = getLocation().getDiffLocation2D(enemyLocation);
-    //             if (diffLoc.getAbsdX() < 2 && diffLoc.getAbsdY() < 2) {
-    //                 attack(nearestEnemy);
-    //             } else {
-    //                 moveTowards(enemyUnits, alliedUnits, diffLoc);
-    //                 printLocation();
-    //             }
-    //         }
+    @Override
+    public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
+        if (!getIsDead()) {
+            Unit nearestEnemy = findNearestEnemy(enemyUnits);
+            if (nearestEnemy == null) {
+                System.out.println("Все противники мертвы");
+            } else {
+                Location2D enemyLocation = nearestEnemy.getLocation();
+                Location2DDifference diffLoc = getLocation().getDiffLocation2D(enemyLocation);
+                if (diffLoc.getAbsdX() < 2 && diffLoc.getAbsdY() < 2) {
+                    attack(nearestEnemy);
+                } else {
+                    moveTowards(enemyUnits, alliedUnits, diffLoc);
+                    printLocation();
+                }
+            }
 
-    //     }
-    // }
+        }
+    }
 
-    // protected void moveTowards(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits, Location2DDifference diffLoc) {
-    //     if (diffLoc.getAbsdX() > diffLoc.getAbsdY()) {
-    //         Location2D newLocation = new Location2D(getLocation().getX() - diffLoc.getSignumdX(), getLocation().getY());
-    //         if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
-    //             // moving along x
-    //             setLocation(newLocation);
-    //             System.out.println("moving along x");
-    //         } else {
-    //             // chek moving along y
-    //             newLocation = new Location2D(getLocation().getX(), getLocation().getY() - diffLoc.getSignumdY());
-    //             if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
-    //                 // moving along y
-    //                 setLocation(newLocation);
-    //                 System.out.println("moving along y");
-    //             } else {
-    //                 // stand?
-    //                 System.out.println("stand?");
-    //             }
-    //         }
+    protected void attack(Unit nearestEnemy) {
+        getDamage(nearestEnemy);
+    }
 
-    //     } else {
-    //         Location2D newLocation = new Location2D(getLocation().getX(), getLocation().getY() - diffLoc.getSignumdY());
-    //         if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
-    //             // moving along y
-    //             setLocation(newLocation);
-    //             System.out.println("moving along y");
-    //         } else {
-    //             // chek moving along x
-    //             newLocation = new Location2D(getLocation().getX() - diffLoc.getSignumdX(), getLocation().getY());
-    //             if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
-    //                 // moving along x
-    //                 setLocation(newLocation);
-    //                 System.out.println("moving along x");
-    //             } else {
-    //                 // stand?
-    //                 System.out.println("stand?");
-    //             }
-    //         }
+    protected void moveTowards(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits, Location2DDifference diffLoc) {
+        if (diffLoc.getAbsdX() > diffLoc.getAbsdY()) {
+            Location2D newLocation = new Location2D(getLocation().getX() - diffLoc.getSignumdX(), getLocation().getY());
+            if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
+                // moving along x
+                setLocation(newLocation);
+                System.out.println("moving along x");
+            } else {
+                // chek moving along y
+                newLocation = new Location2D(getLocation().getX(), getLocation().getY() - diffLoc.getSignumdY());
+                if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
+                    // moving along y
+                    setLocation(newLocation);
+                    System.out.println("moving along y");
+                } else {
+                    // stand?
+                    System.out.println("stand?");
+                }
+            }
 
-    //     }
-    // }
+        } else {
+            Location2D newLocation = new Location2D(getLocation().getX(), getLocation().getY() - diffLoc.getSignumdY());
+            if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
+                // moving along y
+                setLocation(newLocation);
+                System.out.println("moving along y");
+            } else {
+                // chek moving along x
+                newLocation = new Location2D(getLocation().getX() - diffLoc.getSignumdX(), getLocation().getY());
+                if (Location2D.isEmptyCell(newLocation.getX(), newLocation.getY(), alliedUnits)) {
+                    // moving along x
+                    setLocation(newLocation);
+                    System.out.println("moving along x");
+                } else {
+                    // stand?
+                    System.out.println("stand?");
+                }
+            }
 
-    // protected void attack(Unit nearestEnemy) {
-    //     getDamage(nearestEnemy);
-    // }
+        }
+    }
 
-    
     //
     // Getters and setters
     //

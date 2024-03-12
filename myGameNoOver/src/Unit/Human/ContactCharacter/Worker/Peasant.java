@@ -1,5 +1,8 @@
 package Unit.Human.ContactCharacter.Worker;
 
+import java.util.ArrayList;
+
+import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 
 public class Peasant extends Worker {
@@ -51,5 +54,9 @@ public class Peasant extends Worker {
                 0, 0);
     }
 
-
+@Override
+public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
+    // TODO Auto-generated method stub
+    super.step(enemyUnits, alliedUnits);
+}
 }

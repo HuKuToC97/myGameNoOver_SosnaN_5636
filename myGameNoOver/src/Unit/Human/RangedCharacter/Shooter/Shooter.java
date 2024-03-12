@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Unit.Unit;
 import Unit.Auxiliary.Location2D;
+import Unit.Human.ContactCharacter.Worker.Squire;
 import Unit.Human.RangedCharacter.RangedCharacter;
 
 public abstract class Shooter extends RangedCharacter {
@@ -66,6 +67,13 @@ public abstract class Shooter extends RangedCharacter {
     protected void callSquire(ArrayList<Unit> alliedUnits) {
         System.out.println(String.format("У %s нечем атаковать, нужен оруженосец", this));
         System.out.println("findSquire();");
+        for (Unit unit : alliedUnits) {
+            if (unit.getTypeUnit().equals("Squire")) {
+                ((Squire)unit).setFlagOpportunityGiveAmmo(false);
+                setAmmunition(getMaxAmmunition()/3);
+                break;
+            }
+        }
 
     };
 

@@ -55,6 +55,7 @@ public class Witch extends Mage {
                 0, 0);
     }
 
+    // Реализовать колдовство
     public void conjure() {
 
     }

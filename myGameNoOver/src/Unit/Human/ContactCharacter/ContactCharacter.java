@@ -25,4 +25,6 @@ public abstract class ContactCharacter extends Human{
         sustainability);
     }
 
+
+    
 }
