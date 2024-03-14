@@ -47,7 +47,7 @@ public class Monk extends Confessor {
                 100,
                 10, 10, 10,
                 100, 100,
-                1000);
+                10);
     }
 
     public Monk(String name) {

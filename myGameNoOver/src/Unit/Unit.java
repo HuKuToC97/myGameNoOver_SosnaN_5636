@@ -129,7 +129,7 @@ public abstract class Unit implements UnitInterface {
         unit.takeDamage(amountDamage);
     }
 
-    private int calculateGetDamage() {
+    protected int calculateGetDamage() {
         return power * (1 + dexterity / 100);
     }
 
@@ -177,7 +177,7 @@ public abstract class Unit implements UnitInterface {
 
     public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
         if (!getIsDead()) {
-            System.out.println(String.format("%s мог бы атаковать", this));
+            System.out.println(String.format("%s мог бы сделать шаг", this));
         }
     }
 

@@ -47,7 +47,7 @@ public class Witch extends Mage {
                 100,
                 10, 10, 10,
                 100, 100,
-                100);
+                10);
     }
 
     public Witch(String name) {

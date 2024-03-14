@@ -45,7 +45,8 @@ public abstract class Shooter extends RangedCharacter {
         unit.takeDamage(amountDamage);
     }
 
-    private int calculateGetDamage() {
+    @Override
+    protected int calculateGetDamage() {
         return getPower() * (1 + getDexterity() / 100);
     }
 
