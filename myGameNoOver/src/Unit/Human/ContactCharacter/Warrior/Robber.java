@@ -41,8 +41,8 @@ public class Robber extends Warrior {
                 DEFAULT_LEVEL, DEFAULT_EXPERIENCE_POINTS,
                 2,
                 new Location2D(x, y),
-                100,
-                10, 10, 10,
+                130,
+                10, 12, 5,
                 1000);
     }
 
@@ -51,7 +51,7 @@ public class Robber extends Warrior {
                 0, 0);
     }
 
+    // Реализовать удар в спину
     public void backstab() {
-
     }
 }

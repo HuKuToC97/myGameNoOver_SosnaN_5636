@@ -43,6 +43,9 @@ public abstract class Worker extends ContactCharacter {
 
     }
 
+
+
+    
     //
     // Getters and setters
     //

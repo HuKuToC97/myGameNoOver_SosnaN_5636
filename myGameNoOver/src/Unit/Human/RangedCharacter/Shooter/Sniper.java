@@ -65,6 +65,7 @@ public class Sniper extends Shooter {
                 0, 0);
     }
 
+    // РЕализовать выстрел на вылет
     public void shotToFly() {
 
     }

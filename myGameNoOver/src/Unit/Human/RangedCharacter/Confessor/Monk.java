@@ -55,6 +55,7 @@ public class Monk extends Confessor {
                 0, 0);
     }
 
+    // РЕализовать молитву
     public void prayer() {
 
     }

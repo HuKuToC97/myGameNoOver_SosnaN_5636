@@ -1,19 +1,23 @@
 package Unit.Human.ContactCharacter.Worker;
 
+import java.util.ArrayList;
 
+import Unit.Unit;
 import Unit.Auxiliary.Location2D;
 
 public class Squire extends Worker {
     private int fatigue;
+    private boolean flagOpportunityGiveAmmo;
 
-    public Squire(String name, String typeUnit,
+    private Squire(String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
             Location2D location,
             int hitPoints, int maxHitPoints,
             int power, int dexterity, int sustainability,
             int calm, int maxCalm,
-            int fatigue) {
+            int fatigue,
+            boolean flagGiveAmmo) {
         super(name, typeUnit,
                 level, experiencePoints,
                 initiative,
@@ -22,23 +26,25 @@ public class Squire extends Worker {
                 power, dexterity, sustainability,
                 calm, maxCalm);
         this.fatigue = fatigue;
+        this.flagOpportunityGiveAmmo = flagGiveAmmo;
     }
 
-    public Squire(String name, String typeUnit,
+    private Squire(String name, String typeUnit,
             int level, int experiencePoints,
             int initiative,
             Location2D location,
             int maxHitPoints,
             int power, int dexterity, int sustainability,
             int maxCalm,
-            int fatigue) {
+            int fatigue,
+            boolean flagGiveAmmo) {
         this(name, typeUnit,
                 level, experiencePoints,
                 initiative,
                 location,
                 maxHitPoints, maxHitPoints,
                 power, dexterity, sustainability,
-                maxCalm, maxCalm, fatigue);
+                maxCalm, maxCalm, fatigue, flagGiveAmmo);
     }
 
     public Squire(String name, int x, int y) {
@@ -49,7 +55,8 @@ public class Squire extends Worker {
                 100,
                 10, 10, 10,
                 1000,
-                0);
+                0,
+                false);
     }
 
     public Squire(String name) {
@@ -57,11 +64,12 @@ public class Squire extends Worker {
                 0, 0);
     }
 
-    public void bringAmmunation() {
-        setInitiative(getInitiative() * (1 - (fatigue / 100)));
-        fatigue = fatigue--;
+    @Override
+    public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
+        if (!getIsDead()) {
+            setFlagOpportunityGiveAmmo(true);
+        }
     }
-
 
     //
     // Getters and setters
@@ -74,4 +82,11 @@ public class Squire extends Worker {
         this.fatigue = fatigue;
     }
 
+    public boolean isFlagOpportunityGiveAmmo() {
+        return flagOpportunityGiveAmmo;
+    }
+
+    public void setFlagOpportunityGiveAmmo(boolean flagGiveAmmo) {
+        this.flagOpportunityGiveAmmo = flagGiveAmmo;
+    }
 }

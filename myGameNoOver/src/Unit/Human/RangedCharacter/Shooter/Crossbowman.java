@@ -65,6 +65,7 @@ public class Crossbowman extends Shooter {
                 0, 0);
     }
 
+    // Реализовать отравленную стрелу
     public void poisonArrow() {
 
     }

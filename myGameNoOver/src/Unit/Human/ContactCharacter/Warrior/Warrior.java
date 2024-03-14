@@ -41,6 +41,10 @@ public abstract class Warrior extends ContactCharacter {
         }
     }
 
+    protected void attack(Unit nearestEnemy) {
+        getDamage(nearestEnemy);
+    }
+
     protected void moveTowards(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits, Location2DDifference diffLoc) {
         if (diffLoc.getAbsdX() > diffLoc.getAbsdY()) {
             Location2D newLocation = new Location2D(getLocation().getX() - diffLoc.getSignumdX(), getLocation().getY());
@@ -83,9 +87,6 @@ public abstract class Warrior extends ContactCharacter {
         }
     }
 
-    protected void attack(Unit nearestEnemy) {
-        getDamage(nearestEnemy);
-    }
     //
     // Getters and setters
     //
