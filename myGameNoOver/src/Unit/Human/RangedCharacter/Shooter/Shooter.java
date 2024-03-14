@@ -67,11 +67,11 @@ public abstract class Shooter extends RangedCharacter {
 
     protected void callSquire(ArrayList<Unit> alliedUnits) {
         System.out.println(String.format("У %s нечем атаковать, нужен оруженосец", this));
-        System.out.println("findSquire();");
         for (Unit unit : alliedUnits) {
             if (unit.getTypeUnit().equals("Squire")) {
                 ((Squire)unit).setFlagOpportunityGiveAmmo(false);
                 setAmmunition(getMaxAmmunition()/3);
+                System.out.println(getName() + "(у) - теперь есть чем стрелять, стасибо юниту "+ unit.getTypeUnit() +" " + unit.getName());
                 break;
             }
         }
