@@ -57,6 +57,8 @@ public class GameManager {
         if (!continuationFlag) {
             System.out.println("Игра завершена.");
         }
+
+        gameView.getFrame().dispose();
     }
 
     private boolean checkAliveUnit(ArrayList<Unit> allUnits) {
@@ -80,7 +82,7 @@ public class GameManager {
         if (team1DeadFlag || team2DeadFlag) {
             checkWinningTeam();
         }
-        
+
         return !(team1DeadFlag || team2DeadFlag);
     }
 
