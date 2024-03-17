@@ -58,7 +58,11 @@ public abstract class Shooter extends RangedCharacter {
             } else {
                 int countShots = amountShotsInStep;
                 while (checkGotAmmunation(alliedUnits) && countShots > 0) {
-                    getDamage(findNearestEnemy(enemyUnits));
+                    Unit nearestEnemy = findNearestEnemy(enemyUnits);
+                    if (nearestEnemy == null) {
+                        break; // Выходим из цикла, если врагов больше нет
+                    }
+                    getDamage(nearestEnemy);
                     countShots--;
                 }
             }
