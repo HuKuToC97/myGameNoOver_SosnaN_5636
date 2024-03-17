@@ -3,7 +3,6 @@ package Unit;
 import java.util.ArrayList;
 
 import Unit.Auxiliary.Location2D;
-import Unit.Auxiliary.Location2DDifference;
 
 public abstract class Unit implements UnitInterface {
     private boolean isDead;
@@ -23,6 +22,8 @@ public abstract class Unit implements UnitInterface {
     private int power;
     private int dexterity;
     private int sustainability;
+
+    private String statusAction;
 
     // Определяем константы для удобства чтения кода
     protected static final int DEFAULT_LEVEL = 1;
@@ -110,19 +111,22 @@ public abstract class Unit implements UnitInterface {
     }
 
     public String toStringForPartPanel() {
-        return typeUnit + " " + name + " " + "❤️" + hitPoints;
+        return typeUnit + " " + name + " " + "❤️" + hitPoints +"/" + maxHitPoints;
     }
 
     public void printLvlAndHp() {
         System.out.println(String.format("'%s %s' lvl %d, %d HP", typeUnit, name, level, hitPoints));
+        setStatusAction(String.format("'%s %s' lvl %d, %d HP", typeUnit, name, level, hitPoints));
     }
 
     public void printHpAndIsDead() {
         System.out.println(String.format("'%s %s' %d HP, isDead: %b", typeUnit, name, hitPoints, isDead));
+        setStatusAction(String.format("'%s %s' %d HP, isDead: %b", typeUnit, name, hitPoints, isDead));
     }
 
     public void printLocation() {
         System.out.println(String.format("'%s %s' %s", typeUnit, name, getLocation()));
+        setStatusAction(String.format("'%s %s' %s", typeUnit, name, getLocation()));
     }
 
     protected void getDamage(Unit unit) {
@@ -135,7 +139,14 @@ public abstract class Unit implements UnitInterface {
 
     public void takeDamage(int amountGetDamage) {
         int tempCalculateTakeDamage = calculateTakeDamage(amountGetDamage);
-        System.out.println(String.format("%s получает %d урона", this, tempCalculateTakeDamage));
+        if (tempCalculateTakeDamage >= 0){
+            System.out.println(String.format("%s получает %d урона", this, tempCalculateTakeDamage));
+            setStatusAction(String.format("%s получает %d урона", this, tempCalculateTakeDamage));
+        }
+        if (tempCalculateTakeDamage < 0){
+            System.out.println(String.format("%s лечится на %d здоровья", this, -tempCalculateTakeDamage));
+            setStatusAction(String.format("%s лечится на %d здоровья", this, -tempCalculateTakeDamage));
+        }
         hitPoints = hitPoints - tempCalculateTakeDamage;
         sustainability = sustainability - 1;
         if (hitPoints > maxHitPoints)
@@ -156,6 +167,7 @@ public abstract class Unit implements UnitInterface {
         hitPoints = 0;
         isDead = true;
         System.out.println(this + "- пал в неравном бою");
+        setStatusAction(this + "- пал в неравном бою");
     }
 
     public Unit findNearestEnemy(ArrayList<Unit> units) {
@@ -178,6 +190,7 @@ public abstract class Unit implements UnitInterface {
     public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
         if (!getIsDead()) {
             System.out.println(String.format("%s мог бы сделать шаг", this));
+            setStatusAction(String.format("%s мог бы сделать шаг", this));
         }
     }
 
@@ -278,5 +291,14 @@ public abstract class Unit implements UnitInterface {
 
     public void setSustainability(int sustainability) {
         this.sustainability = sustainability;
+    }
+
+
+    public String getStatusAction() {
+        return statusAction;
+    }
+
+    public void setStatusAction(String statusAction) {
+        this.statusAction = statusAction;
     }
 }

@@ -61,6 +61,7 @@ public abstract class Confessor extends RangedCharacter {
                     .println("Юнит " + listFindForHealing.get(0).getName() + " был ПОДЛЕЧЕН юнитом " + this.getName());
         } else {
             System.out.println("Нет живых юнитов для лечения.");
+            setStatusAction("Нет живых юнитов для лечения.");
         }
     }
 
@@ -85,8 +86,10 @@ public abstract class Confessor extends RangedCharacter {
             unitToResurrect.setIsDead(false);
             unitToResurrect.setHitPoints(unitToResurrect.getMaxHitPoints() / 2);
             System.out.println("Юнит " + unitToResurrect.getName() + " был воскрешен с половиной здоровья.");
+            setStatusAction("Юнит " + unitToResurrect.getName() + " был воскрешен с половиной здоровья.");
         } else {
             System.out.println("Нет мертвых юнитов для воскрешения.");
+            setStatusAction("Нет мертвых юнитов для воскрешения.");
         }
     }
 
@@ -113,6 +116,12 @@ public abstract class Confessor extends RangedCharacter {
     protected int calculateGetDamage() {
         return -(getPower() * (1 + getDexterity() / 100));
     }
+    
+    @Override
+    public String toStringForPartPanel() {
+        return super.toStringForPartPanel() + " 🔮" + getFaith() +"/"+getMaxFaith();
+    }
+    
     //
     // Getters and setters
     //

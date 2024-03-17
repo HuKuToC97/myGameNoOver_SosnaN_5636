@@ -28,6 +28,7 @@ public abstract class Mage extends RangedCharacter {
         if (!getIsDead()) {
             if (getMana() < 2) {
                 setMana(getMana() + 1);
+                setStatusAction("Юнит " + getName() + " копит силы");
             } else {
                 attack(alliedUnits);
             }
@@ -53,6 +54,7 @@ public abstract class Mage extends RangedCharacter {
                     .println("Юнит " + listFindForHealing.get(0).getName() + " был ПОДЛЕЧЕН юнитом " + this.getName());
         } else {
             System.out.println("Нет живых юнитов для лечения.");
+            setStatusAction("Нет живых юнитов для лечения.");
         }
     }
 
@@ -77,8 +79,10 @@ public abstract class Mage extends RangedCharacter {
             unitToResurrect.setIsDead(false);
             unitToResurrect.setHitPoints(unitToResurrect.getMaxHitPoints() / 2);
             System.out.println("Юнит " + unitToResurrect.getName() + " был воскрешен с половиной здоровья.");
+            setStatusAction("Юнит " + unitToResurrect.getName() + " был воскрешен с половиной здоровья.");
         } else {
             System.out.println("Нет мертвых юнитов для воскрешения.");
+            setStatusAction("Нет мертвых юнитов для воскрешения.");
         }
     }
 

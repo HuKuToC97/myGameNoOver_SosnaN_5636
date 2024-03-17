@@ -85,8 +85,10 @@ public class GameManager {
         if (team1DeadFlag && team2DeadFlag) {
             JOptionPane.showMessageDialog(gameView.getFrame(), "Both teams are dead. It's a draw!");
         } else if (team1DeadFlag) {
+            printToTopPanel("Игра окончена");
             JOptionPane.showMessageDialog(gameView.getFrame(), "Team 2 wins!");
         } else if (team2DeadFlag) {
+            printToTopPanel("Игра окончена");
             JOptionPane.showMessageDialog(gameView.getFrame(), "Team 1 wins!");
         }
     }
@@ -100,16 +102,18 @@ public class GameManager {
 
     private void stepApp(ArrayList<Unit> allUnits, ArrayList<Unit> team1, ArrayList<Unit> team2) {
         try {
-            int delayInMillis = 0;
+            int delayInMillis = 1500;
             for (Unit unit : allUnits) {
                 if (team1.contains(unit)) {
                     unit.step(team2, team1);
                 } else {
                     unit.step(team1, team2);
                 }
+                printToTopPanel(unit.getStatusAction());
                 updateGameView(allUnits);
                 Thread.sleep(delayInMillis);
             }
+            printToTopPanel("Шаг завершен");
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -157,6 +161,10 @@ public class GameManager {
             int y = location.getY();
             gameField.drawUnit(unit, x, y);
         }
+    }
+
+    public void printToTopPanel(String text){
+        gameView.getMainPanel().getTopPanel().getTextField().setText(text);
     }
 
     //

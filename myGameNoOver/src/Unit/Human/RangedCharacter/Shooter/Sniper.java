@@ -56,7 +56,7 @@ public class Sniper extends Shooter {
                 10, 10, 10,
                 100, 100,
                 100,
-                10, 100,
+                10, 30,
                 3);
     }
 

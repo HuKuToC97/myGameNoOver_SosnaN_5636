@@ -43,6 +43,7 @@ public abstract class Shooter extends RangedCharacter {
         ammunition--;
         int amountDamage = calculateGetDamage();
         System.out.println(String.format("%s атакует %s", this, unit));
+        setStatusAction(String.format("%s атакует %s", this, unit));
         unit.takeDamage(amountDamage);
     }
 
@@ -70,12 +71,14 @@ public abstract class Shooter extends RangedCharacter {
     }
 
     protected void callSquire(ArrayList<Unit> alliedUnits) {
-        System.out.println(String.format("У %s нечем атаковать, нужен оруженосец", this));
+        System.out.println(String.format("У %s нечем атаковать, все расстрелял, нужен оруженосец", this));
+        setStatusAction(String.format("У %s нечем атаковать, все расстрелял, нужен оруженосец", this));
         for (Unit unit : alliedUnits) {
             if (unit.getTypeUnit().equals("Squire")) {
                 ((Squire)unit).setFlagOpportunityGiveAmmo(false);
                 setAmmunition(getMaxAmmunition()/3);
-                System.out.println(getName() + "(у) - теперь есть чем стрелять, стасибо юниту "+ unit.getTypeUnit() +" " + unit.getName());
+                System.out.println(getName() + "(у) - добавили аммунации, стасибо юниту "+ unit.getTypeUnit() +" " + unit.getName());
+                setStatusAction(getName() + "(у) - добавили аммунации, стасибо юниту "+ unit.getTypeUnit() +" " + unit.getName());
                 break;
             }
         }
@@ -99,7 +102,7 @@ public abstract class Shooter extends RangedCharacter {
 
     @Override
     public String toStringForPartPanel() {
-        return super.toStringForPartPanel() + "🏹" + ammunition;
+        return super.toStringForPartPanel() + " 🏹" + ammunition + "/" + maxAmmunition;
     }
     //
     // Getters and setters

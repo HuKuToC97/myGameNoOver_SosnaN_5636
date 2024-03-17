@@ -54,9 +54,11 @@ public class Peasant extends Worker {
                 0, 0);
     }
 
-@Override
-public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
-    // TODO Auto-generated method stub
-    super.step(enemyUnits, alliedUnits);
-}
+    @Override
+    public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
+        if (!getIsDead()) {
+            setStatusAction(getTypeUnit() + " " + getName() + " - просто существует, он же крестьянин");
+
+        }
+    }
 }

@@ -68,6 +68,7 @@ public class Squire extends Worker {
     public void step(ArrayList<Unit> enemyUnits, ArrayList<Unit> alliedUnits) {
         if (!getIsDead()) {
             setFlagOpportunityGiveAmmo(true);
+            setStatusAction(getTypeUnit() + " " + getName() + "- опять носил кому-то стрелы");
         }
     }
 

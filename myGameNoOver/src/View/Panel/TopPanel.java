@@ -1,8 +1,6 @@
 package View.Panel;
 
 import javax.swing.*;
-
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,12 +8,17 @@ import java.awt.event.ActionListener;
 public class TopPanel extends JPanel {
     private JButton stepButton;
     private JButton exitButton;
+    private JTextField textField;
 
     public TopPanel() {
         setPreferredSize(new Dimension(0, 50));
         setBackground(Color.GRAY);
         setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        setLayout(new FlowLayout(FlowLayout.LEFT));
+
+        // Создаем панель для кнопок и устанавливаем для нее FlowLayout
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.setBackground(Color.GRAY);
+
         // Создание кнопки "Сделать шаг"
         stepButton = new JButton("Сделать шаг");
         stepButton.addActionListener(new ActionListener() {
@@ -34,9 +37,19 @@ public class TopPanel extends JPanel {
             }
         });
 
-        // Добавление кнопок на панель
-        add(stepButton);
-        add(exitButton);
+        // Добавляем кнопки на панель
+        buttonPanel.add(stepButton);
+        buttonPanel.add(exitButton);
+
+        // Создаем текстовое поле
+        textField = new JTextField();
+        textField.setPreferredSize(new Dimension(200, 40)); // Устанавливаем размер текстового поля
+        textField.setHorizontalAlignment(JTextField.CENTER); // Выравниваем текст по центру
+
+        // Добавляем панель с кнопками и текстовое поле на TopPanel
+        setLayout(new BorderLayout());
+        add(buttonPanel, BorderLayout.WEST);
+        add(textField, BorderLayout.CENTER);
     }
 
     // Метод для оповещения о событии "Сделать шаг"
@@ -54,5 +67,17 @@ public class TopPanel extends JPanel {
                 e.printStackTrace();
             }
         }
+    }
+
+    // 
+    // Getters and setters
+    // 
+    
+    public JTextField getTextField() {
+        return textField;
+    }
+
+    public void setTextField(JTextField textField) {
+        this.textField = textField;
     }
 }

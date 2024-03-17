@@ -52,6 +52,7 @@ public abstract class Warrior extends ContactCharacter {
                 // moving along x
                 setLocation(newLocation);
                 System.out.println("moving along x");
+                setStatusAction("moving along x");
             } else {
                 // chek moving along y
                 newLocation = new Location2D(getLocation().getX(), getLocation().getY() - diffLoc.getSignumdY());
@@ -59,6 +60,7 @@ public abstract class Warrior extends ContactCharacter {
                     // moving along y
                     setLocation(newLocation);
                     System.out.println("moving along y");
+                    setStatusAction("moving along y");
                 } else {
                     // stand?
                     System.out.println("stand?");
@@ -71,6 +73,7 @@ public abstract class Warrior extends ContactCharacter {
                 // moving along y
                 setLocation(newLocation);
                 System.out.println("moving along y");
+                setStatusAction("moving along y");
             } else {
                 // chek moving along x
                 newLocation = new Location2D(getLocation().getX() - diffLoc.getSignumdX(), getLocation().getY());
@@ -78,6 +81,7 @@ public abstract class Warrior extends ContactCharacter {
                     // moving along x
                     setLocation(newLocation);
                     System.out.println("moving along x");
+                    setStatusAction("moving along x");
                 } else {
                     // stand?
                     System.out.println("stand?");
