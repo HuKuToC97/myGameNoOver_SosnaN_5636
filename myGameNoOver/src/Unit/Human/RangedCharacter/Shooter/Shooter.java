@@ -97,6 +97,10 @@ public abstract class Shooter extends RangedCharacter {
         }
     }
 
+    @Override
+    public String toStringForPartPanel() {
+        return super.toStringForPartPanel() + "🏹" + ammunition;
+    }
     //
     // Getters and setters
     //

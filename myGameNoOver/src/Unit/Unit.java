@@ -110,7 +110,7 @@ public abstract class Unit implements UnitInterface {
     }
 
     public String toStringForPartPanel() {
-        return typeUnit + " " + name + " " + hitPoints + "HP ";
+        return typeUnit + " " + name + " " + "❤️" + hitPoints;
     }
 
     public void printLvlAndHp() {
