@@ -2,7 +2,6 @@ package View.Panel;
 
 import javax.swing.*;
 
-import Meneger.GameManager.GameManager;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +21,6 @@ public class TopPanel extends JPanel {
         stepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GameManager.continuationFlag = true; // Устанавливаем флаг продолжения игры в true
                 notifyStep(); // Оповещаем TopPanel о событии
             }
         });
@@ -32,7 +30,7 @@ public class TopPanel extends JPanel {
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GameManager.continuationFlag = false; // Устанавливаем флаг продолжения игры в false
+                System.exit(0);
             }
         });
 

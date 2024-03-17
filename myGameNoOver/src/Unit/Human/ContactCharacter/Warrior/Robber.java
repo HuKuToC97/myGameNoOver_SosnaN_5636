@@ -42,8 +42,8 @@ public class Robber extends Warrior {
                 2,
                 new Location2D(x, y),
                 130,
-                10, 12, 5,
-                1000);
+                12, 12, 5,
+                10);
     }
 
     public Robber(String name) {

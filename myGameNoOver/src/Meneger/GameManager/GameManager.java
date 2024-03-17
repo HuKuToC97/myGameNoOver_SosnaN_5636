@@ -14,8 +14,6 @@ import View.Panel.GameField.GameField;
 public class GameManager {
     private GameView gameView;
 
-    public static boolean continuationFlag = true;
-
     private static boolean team1DeadFlag;
     private static boolean team2DeadFlag;
 
@@ -48,15 +46,12 @@ public class GameManager {
         allUnits.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
         updateGameView(allUnits);
 
-        while (continuationFlag && checkAliveUnit(allUnits)) {
+        while (checkAliveUnit(allUnits)) {
             updateGameView(allUnits);
             gameView.getMainPanel().getTopPanel().waitForStep(); // Ждем нажатия кнопки "Сделать шаг"
             stepApp(allUnits, team1, team2);
         }
 
-        if (!continuationFlag) {
-            System.out.println("Игра завершена.");
-        }
 
         gameView.getFrame().dispose();
     }
@@ -191,4 +186,5 @@ public class GameManager {
     public static ArrayList<Unit> getTeam2() {
         return team2;
     }
+
 }

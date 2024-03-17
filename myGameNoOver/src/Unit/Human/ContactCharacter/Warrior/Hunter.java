@@ -42,8 +42,8 @@ public class Hunter extends Warrior {
                 2,
                 new Location2D(x, y),
                 150,
-                5, 10, 8,
-                1000);
+                8, 10, 8,
+                10);
     }
 
     public Hunter(String name) {
