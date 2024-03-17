@@ -3,7 +3,9 @@ package View.Panel.GameField;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
 
 import Meneger.GameManager.GameManager;
 import Unit.Unit;
@@ -57,7 +59,8 @@ public class GameField extends JPanel {
         } else if (GameManager.getTeam2().contains(unit)) {
             sector.setBackground(TEAM2_COLOR);
         } else {
-            sector.setBackground(Color.BLACK); // Если юнит не принадлежит ни одной команде, устанавливаем цвет по умолчанию
+            sector.setBackground(Color.BLACK); // Если юнит не принадлежит ни одной команде, устанавливаем цвет по
+                                               // умолчанию
         }
     }
 
@@ -71,17 +74,21 @@ public class GameField extends JPanel {
             });
             sector.addMouseListener(new java.awt.event.MouseListener() {
                 @Override
-                public void mouseClicked(MouseEvent e) {}
-            
+                public void mouseClicked(MouseEvent e) {
+                }
+
                 @Override
-                public void mousePressed(MouseEvent e) {}
-            
+                public void mousePressed(MouseEvent e) {
+                }
+
                 @Override
-                public void mouseReleased(MouseEvent e) {}
-            
+                public void mouseReleased(MouseEvent e) {
+                }
+
                 @Override
-                public void mouseEntered(MouseEvent e) {}
-            
+                public void mouseEntered(MouseEvent e) {
+                }
+
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (unitInfoPopup != null) {
@@ -99,25 +106,25 @@ public class GameField extends JPanel {
             }
             UnitInfoPopup popup = new UnitInfoPopup(unit); // Создаем всплывающее окно с информацией о персонаже
             PopupFactory factory = PopupFactory.getSharedInstance();
-            
+
             // Получаем размеры экрана
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             int screenWidth = (int) screenSize.getWidth();
             int screenHeight = (int) screenSize.getHeight();
-    
+
             // Размеры всплывающего окна
             int popupWidth = popup.getPreferredSize().width;
             int popupHeight = popup.getPreferredSize().height;
-    
+
             // Координаты сектора на экране
             Point locationOnScreen = sector.getLocationOnScreen();
             int sectorX = (int) locationOnScreen.getX();
             int sectorY = (int) locationOnScreen.getY();
-    
+
             // Вычисляем координаты для отображения всплывающего окна
             int popupX = sectorX + x;
             int popupY = sectorY + y + 20; // Смещаем всплывающее окно ниже сектора
-    
+
             // Проверяем, чтобы окно не выходило за пределы экрана
             if (popupX + popupWidth > screenWidth) {
                 popupX = screenWidth - popupWidth;
@@ -125,25 +132,32 @@ public class GameField extends JPanel {
             if (popupY + popupHeight > screenHeight) {
                 popupY = screenHeight - popupHeight;
             }
-    
+
             // Создаем экземпляр всплывающего окна
             unitInfoPopup = factory.getPopup(sector, popup, popupX, popupY);
             unitInfoPopup.show(); // Отображаем всплывающее окно
         }
     }
-    
-    
-    
 
     public void clear() {
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
                 JPanel sector = sectors[i][j];
+                removeUnitMouseListeners(sector);
                 sector.removeAll(); // Очищаем сектор
                 sector.setBackground(Color.BLACK); // Возвращаем цвет фона по умолчанию
                 sector.revalidate(); // Перерисовываем сектор
                 sector.repaint();
             }
+        }
+    }
+
+    private void removeUnitMouseListeners(JPanel sector) {
+        for (MouseListener listener : sector.getMouseListeners()) {
+            sector.removeMouseListener(listener);
+        }
+        for (MouseMotionListener listener : sector.getMouseMotionListeners()) {
+            sector.removeMouseMotionListener(listener);
         }
     }
 }
