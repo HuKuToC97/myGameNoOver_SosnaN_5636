@@ -16,7 +16,7 @@ public class GameField extends JPanel {
     private static final Color DEAD_UNIT_COLOR = Color.RED;
 
     private JPanel[][] sectors;
-    private Popup unitInfoPopup;
+    private Popup unitInfoPopup; // Объявляем переменную для всплывающего окна информации о юните
 
     public GameField() {
         setLayout(new GridLayout(GRID_SIZE, GRID_SIZE));
@@ -37,47 +37,36 @@ public class GameField extends JPanel {
         }
     }
 
-    private void showUnitInfoPopup(int x, int y, JPanel sector) {
-        Unit unit = getUnitFromSector(sector); // Получаем персонажа из сектора
-        if (unit != null) { // Если персонаж найден
-            if (unitInfoPopup != null) { // если уже существует всплывающее окно, скрываем его
-                unitInfoPopup.hide();
-            }
-            UnitInfoPopup popup = new UnitInfoPopup(unit); // Создаем всплывающее окно с информацией о персонаже
-            PopupFactory factory = PopupFactory.getSharedInstance();
-            
-            // Получаем абсолютные координаты сектора на экране
-            Point locationOnScreen = sector.getLocationOnScreen();
-            int absoluteX = (int) locationOnScreen.getX() + x;
-            int absoluteY = (int) locationOnScreen.getY() + y;
-    
-            unitInfoPopup = factory.getPopup(sector, popup, absoluteX, absoluteY); // Создаем экземпляр всплывающего окна
-            unitInfoPopup.show(); // Отображаем всплывающее окно
-        }
-    }
-
-    private Unit getUnitFromSector(JPanel sector) {
-        // Предполагаем, что каждая панель sector содержит в себе объект Unit
-        Object obj = sector.getClientProperty("unit");
-        if (obj instanceof Unit) {
-            return (Unit) obj;
-        } else {
-            return null;
-        }
-    }
-
     public void drawUnit(Unit unit, int x, int y) {
         if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
             JPanel sector = sectors[x][y];
             sector.removeAll(); // Очищаем сектор от предыдущих элементов
             DrawUnit.drawUnit(unit, sector);
             setSectorColor(unit, sector);
+            addUnitMouseListeners(unit, sector);
+            sector.revalidate(); // Перерисовываем сектор
+            sector.repaint();
+        }
+    }
 
-            sector.putClientProperty("unit", unit);
+    private void setSectorColor(Unit unit, JPanel sector) {
+        if (unit.getIsDead()) {
+            sector.setBackground(DEAD_UNIT_COLOR);
+        } else if (GameManager.getTeam1().contains(unit)) {
+            sector.setBackground(TEAM1_COLOR);
+        } else if (GameManager.getTeam2().contains(unit)) {
+            sector.setBackground(TEAM2_COLOR);
+        } else {
+            sector.setBackground(Color.BLACK); // Если юнит не принадлежит ни одной команде, устанавливаем цвет по умолчанию
+        }
+    }
+
+    private void addUnitMouseListeners(Unit unit, JPanel sector) {
+        if (unit != null) {
             sector.addMouseMotionListener(new MouseMotionAdapter() {
                 @Override
                 public void mouseMoved(MouseEvent e) {
-                    showUnitInfoPopup(e.getX(), e.getY(), sector);
+                    showUnitInfoPopup(e.getX(), e.getY(), sector, unit);
                 }
             });
             sector.addMouseListener(new java.awt.event.MouseListener() {
@@ -100,24 +89,51 @@ public class GameField extends JPanel {
                     }
                 }
             });
-
-            sector.revalidate(); // Перерисовываем сектор
-            sector.repaint();
         }
     }
 
-    private void setSectorColor(Unit unit, JPanel sector) {
-        if (unit.getIsDead()) {
-            sector.setBackground(DEAD_UNIT_COLOR);
-        } else if (GameManager.getTeam1().contains(unit)) {
-            sector.setBackground(TEAM1_COLOR);
-        } else if (GameManager.getTeam2().contains(unit)) {
-            sector.setBackground(TEAM2_COLOR);
-        } else {
-            sector.setBackground(Color.BLACK); // Если юнит не принадлежит ни одной команде, устанавливаем цвет по
-                                               // умолчанию
+    private void showUnitInfoPopup(int x, int y, JPanel sector, Unit unit) {
+        if (unit != null) { // Если персонаж найден
+            if (unitInfoPopup != null) { // если уже существует всплывающее окно, скрываем его
+                unitInfoPopup.hide();
+            }
+            UnitInfoPopup popup = new UnitInfoPopup(unit); // Создаем всплывающее окно с информацией о персонаже
+            PopupFactory factory = PopupFactory.getSharedInstance();
+            
+            // Получаем размеры экрана
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            int screenWidth = (int) screenSize.getWidth();
+            int screenHeight = (int) screenSize.getHeight();
+    
+            // Размеры всплывающего окна
+            int popupWidth = popup.getPreferredSize().width;
+            int popupHeight = popup.getPreferredSize().height;
+    
+            // Координаты сектора на экране
+            Point locationOnScreen = sector.getLocationOnScreen();
+            int sectorX = (int) locationOnScreen.getX();
+            int sectorY = (int) locationOnScreen.getY();
+    
+            // Вычисляем координаты для отображения всплывающего окна
+            int popupX = sectorX + x;
+            int popupY = sectorY + y + 20; // Смещаем всплывающее окно ниже сектора
+    
+            // Проверяем, чтобы окно не выходило за пределы экрана
+            if (popupX + popupWidth > screenWidth) {
+                popupX = screenWidth - popupWidth;
+            }
+            if (popupY + popupHeight > screenHeight) {
+                popupY = screenHeight - popupHeight;
+            }
+    
+            // Создаем экземпляр всплывающего окна
+            unitInfoPopup = factory.getPopup(sector, popup, popupX, popupY);
+            unitInfoPopup.show(); // Отображаем всплывающее окно
         }
     }
+    
+    
+    
 
     public void clear() {
         for (int i = 0; i < GRID_SIZE; i++) {
