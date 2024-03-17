@@ -38,12 +38,21 @@ public abstract class Mage extends RangedCharacter {
         if (isFlagAccumulateMana() || countAlliedUnitsDied(alliedUnits) >= 3) {
             tryResurrect(alliedUnits);
         } else {
-            ArrayList<Unit> listFindForHealing = new ArrayList<>(alliedUnits);
+            healingUnit(alliedUnits);
+        }
+    }
+
+    public void healingUnit(ArrayList<Unit> alliedUnits) {
+        ArrayList<Unit> listFindForHealing = new ArrayList<>(alliedUnits);
+        listFindForHealing.removeIf(Unit::getIsDead); // Удалить мертвых юнитов из списка
+
+        if (!listFindForHealing.isEmpty()) {
             listFindForHealing.sort((u1, u2) -> u1.getHitPoints() - u2.getHitPoints());
             getDamage(listFindForHealing.get(0));
             System.out
                     .println("Юнит " + listFindForHealing.get(0).getName() + " был ПОДЛЕЧЕН юнитом " + this.getName());
-
+        } else {
+            System.out.println("Нет живых юнитов для лечения.");
         }
     }
 
