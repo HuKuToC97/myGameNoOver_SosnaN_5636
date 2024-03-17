@@ -2,6 +2,8 @@ package Meneger.GameManager;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import Meneger.UnitManager.UnitManager;
 import Unit.Unit;
 import Unit.Auxiliary.Location2D;
@@ -47,9 +49,9 @@ public class GameManager {
         updateGameView(allUnits);
 
         while (continuationFlag && checkAliveUnit(allUnits)) {
+            updateGameView(allUnits);
             gameView.getMainPanel().getTopPanel().waitForStep(); // Ждем нажатия кнопки "Сделать шаг"
             stepApp(allUnits, team1, team2);
-            updateGameView(allUnits);
         }
 
         if (!continuationFlag) {
@@ -74,7 +76,22 @@ public class GameManager {
         if (team2DeadFlag) {
             System.out.println("Team1 win");
         }
+
+        if (team1DeadFlag || team2DeadFlag) {
+            checkWinningTeam();
+        }
+        
         return !(team1DeadFlag || team2DeadFlag);
+    }
+
+    private void checkWinningTeam() {
+        if (team1DeadFlag && team2DeadFlag) {
+            JOptionPane.showMessageDialog(gameView.getFrame(), "Both teams are dead. It's a draw!");
+        } else if (team1DeadFlag) {
+            JOptionPane.showMessageDialog(gameView.getFrame(), "Team 2 wins!");
+        } else if (team2DeadFlag) {
+            JOptionPane.showMessageDialog(gameView.getFrame(), "Team 1 wins!");
+        }
     }
 
     private void printTeam(ArrayList<Unit> team) {
