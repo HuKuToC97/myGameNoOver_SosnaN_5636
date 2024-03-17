@@ -15,7 +15,7 @@ public class TopPanel extends JPanel {
         setPreferredSize(new Dimension(0, 50));
         setBackground(Color.GRAY);
         setBorder(BorderFactory.createLineBorder(Color.WHITE));
-
+        setLayout(new FlowLayout(FlowLayout.LEFT));
         // Создание кнопки "Сделать шаг"
         stepButton = new JButton("Сделать шаг");
         stepButton.addActionListener(new ActionListener() {
